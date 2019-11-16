@@ -2,7 +2,7 @@
 
 # C# wrapper for [Fortnite-API.com](https://fortnite-api.com)
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/releases) [![NuGet](https://img.shields.io/nuget/vpre/Fortnite-API-Wrapper.svg?maxAge=2592000?style=plastic)](https://www.nuget.org/packages/Fortnite-API-Wrapper) [![GitHub issues](https://img.shields.io/github/issues/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/issues) [![MIT License](https://img.shields.io/github/license/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/releases/latest) [![Nuget](https://img.shields.io/nuget/v/Fortnite-API-Wrapper)](https://www.nuget.org/packages/Fortnite-API-Wrapper) ![Nuget DLs](https://img.shields.io/nuget/dt/Fortnite-API-Wrapper) [![GitHub issues](https://img.shields.io/github/issues/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/issues) [![GitHub License](https://img.shields.io/github/license/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/blob/master/LICENSE) [![Discord](https://img.shields.io/discord/621452110558527502)](https://fortnite-api.com/discord) [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://fortnite-api.com/paypal)
 
 </div>
 
