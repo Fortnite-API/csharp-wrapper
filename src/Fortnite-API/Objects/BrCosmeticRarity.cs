@@ -15,7 +15,7 @@ namespace Fortnite_API.Objects
 		[EnumMember(Value = "starwars")] StarWars,
 		[EnumMember(Value = "marvel")] Marvel,
 		[EnumMember(Value = "dc")] DC,
-		[EnumMember(Value = "creatorcollab")] CreatorCollab,
+		[EnumMember(Value = "icon")] Icon,
 		[EnumMember(Value = "shadow")] Shadow,
 		[EnumMember(Value = "epic")] Epic,
 		[EnumMember(Value = "rare")] Rare,
