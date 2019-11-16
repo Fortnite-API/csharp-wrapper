@@ -3,20 +3,46 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Fortnite_API</RootNamespace>
+    <Description>C# wrapper for https://fortnite-api.com</Description>
+    <PackageId>Fortnite-API-Wrapper</PackageId>
+    <Product>Fortnite-API-Wrapper</Product>
+    <PackageProjectUrl>https://fortnite-api.com</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Fortnite-API/csharp-wrapper</RepositoryUrl>
+    <NeutralLanguage />
+    <PackageTags>fortnite, fortniteapi, fortnite-api, fortnite-api.com</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <Authors>Fortnite-API, NotOfficer</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>1.0.1</Version>
+    <Company>Fortnite-API</Company>
+    <PackageIconUrl>https://fortnite-api.com/logo.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <Copyright>Copyright (c) 2019 Fortnite-API.com</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE</DefineConstants>
     <PlatformTarget>x64</PlatformTarget>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>
+    <DefineConstants />
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RestSharp" Version="106.6.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
