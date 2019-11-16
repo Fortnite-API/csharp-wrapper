@@ -10,7 +10,7 @@ This library offers a complete wrapper around the endpoints of [fortnite-api.com
 
 ## NuGet
 
-    Install-Package GameOverlay.Net -Version 4.0.6
+    Install-Package Fortnite-API-Wrapper
 
 ## Documentation
 
