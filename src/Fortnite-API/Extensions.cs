@@ -8,25 +8,25 @@ namespace Fortnite_API
 {
 	internal static class Extensions
 	{
-		public static string GetLanguageCode(this ApiLanguage language)
+		public static string GetLanguageCode(this GameLanguage language)
 		{
 			return language switch
 			{
-				ApiLanguage.EN => "en",
-				ApiLanguage.AR => "ar",
-				ApiLanguage.DE => "de",
-				ApiLanguage.ES_419 => "es-419",
-				ApiLanguage.ES => "es",
-				ApiLanguage.FR => "fr",
-				ApiLanguage.IT => "it",
-				ApiLanguage.JA => "ja",
-				ApiLanguage.KO => "ko",
-				ApiLanguage.PL => "pl",
-				ApiLanguage.PT_BR => "pt-BR",
-				ApiLanguage.RU => "ru",
-				ApiLanguage.TR => "tr",
-				ApiLanguage.ZH_CN => "zh-CN",
-				ApiLanguage.ZH_HANT => "zh-Hant",
+				GameLanguage.EN => "en",
+				GameLanguage.AR => "ar",
+				GameLanguage.DE => "de",
+				GameLanguage.ES_419 => "es-419",
+				GameLanguage.ES => "es",
+				GameLanguage.FR => "fr",
+				GameLanguage.IT => "it",
+				GameLanguage.JA => "ja",
+				GameLanguage.KO => "ko",
+				GameLanguage.PL => "pl",
+				GameLanguage.PT_BR => "pt-BR",
+				GameLanguage.RU => "ru",
+				GameLanguage.TR => "tr",
+				GameLanguage.ZH_CN => "zh-CN",
+				GameLanguage.ZH_HANT => "zh-Hant",
 				_ => throw new ArgumentOutOfRangeException(nameof(language))
 			};
 		}
@@ -76,7 +76,7 @@ namespace Fortnite_API
 				BrCosmeticRarity.StarWars => "starwars",
 				BrCosmeticRarity.Marvel => "marvel",
 				BrCosmeticRarity.DC => "dc",
-				BrCosmeticRarity.CreatorCollab => "creatorcollab",
+				BrCosmeticRarity.Icon => "icon",
 				BrCosmeticRarity.Shadow => "shadow",
 				BrCosmeticRarity.Epic => "epic",
 				BrCosmeticRarity.Rare => "rare",

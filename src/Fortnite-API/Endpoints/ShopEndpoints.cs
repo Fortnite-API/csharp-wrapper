@@ -16,7 +16,7 @@ namespace Fortnite_API.Endpoints
 			_client = client;
 		}
 
-		public async Task<ApiResponse<BrShop>> GetBrAsync(ApiLanguage? language = null, CancellationToken token = default)
+		public async Task<ApiResponse<BrShop>> GetBrAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
 			var request = new RestRequest("/shop/br", Method.GET);
 
@@ -29,7 +29,7 @@ namespace Fortnite_API.Endpoints
 			return response.Data;
 		}
 
-		public ApiResponse<BrShop> GetBr(ApiLanguage? language = null)
+		public ApiResponse<BrShop> GetBr(GameLanguage? language = null)
 		{
 			return GetBrAsync(language).GetAwaiter().GetResult();
 		}

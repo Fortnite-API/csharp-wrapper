@@ -18,7 +18,7 @@ namespace Fortnite_API.Endpoints
 			_client = client;
 		}
 
-		public async Task<ApiResponse<List<BrCosmetic>>> GetBrAsync(ApiLanguage? language = null, CancellationToken token = default)
+		public async Task<ApiResponse<List<BrCosmetic>>> GetBrAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
 			var request = new RestRequest("/cosmetics/br", Method.GET);
 
@@ -31,12 +31,12 @@ namespace Fortnite_API.Endpoints
 			return response.Data;
 		}
 
-		public ApiResponse<List<BrCosmetic>> GetBr(ApiLanguage? language = null)
+		public ApiResponse<List<BrCosmetic>> GetBr(GameLanguage? language = null)
 		{
 			return GetBrAsync(language).GetAwaiter().GetResult();
 		}
 
-		public async Task<ApiResponse<BrCosmetic>> GetBrAsync(string cosmeticId, ApiLanguage? language = null, CancellationToken token = default)
+		public async Task<ApiResponse<BrCosmetic>> GetBrAsync(string cosmeticId, GameLanguage? language = null, CancellationToken token = default)
 		{
 			if (cosmeticId == null)
 			{
@@ -59,12 +59,12 @@ namespace Fortnite_API.Endpoints
 			return response.Data;
 		}
 
-		public ApiResponse<BrCosmetic> GetBr(string cosmeticId, ApiLanguage? language = null)
+		public ApiResponse<BrCosmetic> GetBr(string cosmeticId, GameLanguage? language = null)
 		{
 			return GetBrAsync(cosmeticId, language).GetAwaiter().GetResult();
 		}
 
-		public async Task<ApiResponse<List<BrCosmetic>>> SearchBrIdsAsync(IEnumerable<string> cosmeticIds, ApiLanguage? language = null, CancellationToken token = default)
+		public async Task<ApiResponse<List<BrCosmetic>>> SearchBrIdsAsync(IEnumerable<string> cosmeticIds, GameLanguage? language = null, CancellationToken token = default)
 		{
 			if (cosmeticIds == null)
 			{
@@ -94,7 +94,7 @@ namespace Fortnite_API.Endpoints
 			return response.Data;
 		}
 
-		public ApiResponse<List<BrCosmetic>> SearchBrIds(IEnumerable<string> cosmeticIds, ApiLanguage? language = null)
+		public ApiResponse<List<BrCosmetic>> SearchBrIds(IEnumerable<string> cosmeticIds, GameLanguage? language = null)
 		{
 			return SearchBrIdsAsync(cosmeticIds, language).GetAwaiter().GetResult();
 		}

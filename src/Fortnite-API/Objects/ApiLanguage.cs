@@ -1,6 +1,6 @@
 ﻿namespace Fortnite_API.Objects
 {
-	public enum ApiLanguage
+	public enum GameLanguage
 	{
 		EN,
 		AR,

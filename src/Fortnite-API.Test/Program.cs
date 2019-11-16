@@ -11,7 +11,7 @@ namespace Fortnite_API.Test
 		{
 			var api = new FortniteApi();
 
-			var cosmetics = await api.Cosmetics.GetBrAsync(ApiLanguage.DE);
+			var cosmetics = await api.Cosmetics.GetBrAsync(GameLanguage.DE);
 			await Task.Delay(500);
 
 			var johnWickById = await api.Cosmetics.GetBrAsync("bid_271_assassinsuitmale");
@@ -31,9 +31,9 @@ namespace Fortnite_API.Test
 			});
 			await Task.Delay(500);
 
-			var allShadowsSearch = await api.Cosmetics.SearchAllBrAsync(x =>
+			var allIconSeriesSearch = await api.Cosmetics.SearchAllBrAsync(x =>
 			{
-				x.Rarity = BrCosmeticRarity.Shadow;
+				x.Rarity = BrCosmeticRarity.Icon;
 			});
 			await Task.Delay(500);
 

@@ -2,8 +2,8 @@
 {
 	public class BrCosmeticSearchProperties
 	{
-		public Optional<ApiLanguage> Language;
-		public Optional<ApiLanguage> SearchLanguage;
+		public Optional<GameLanguage> Language;
+		public Optional<GameLanguage> SearchLanguage;
 		public Optional<MatchMethod> MatchMethod;
 		public Optional<BrCosmeticType> Type { get; set; }
 		public Optional<string> BackendType { get; set; }
