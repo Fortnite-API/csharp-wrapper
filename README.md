@@ -50,5 +50,7 @@ We are open for any contribution.
 ## License
 
 - Fortnite-API (MIT) [License](https://github.com/Fortnite-API/csharp-wrapper/blob/master/LICENSE "MIT License")
+- RestSharp (Apache 2.0) [License](https://github.com/restsharp/RestSharp/blob/master/LICENSE.txt)
+- Newtonsoft.Json (MIT) [License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md)
 
 API developed by [Fortnite-API.com](https://fortnite-api.com/about)
