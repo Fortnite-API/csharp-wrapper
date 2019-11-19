@@ -12,11 +12,13 @@ namespace Fortnite_API.Objects
 		[J("type")] public BrCosmeticType Type { get; private set; }
 		[J("backendType")] public string BackendType { get; private set; }
 		[J("rarity")] public BrCosmeticRarity Rarity { get; private set; }
+		[J("displayRarity")] public string DisplayRarity { get; private set; }
 		[J("backendRarity")] public string BackendRarity { get; private set; }
 		[J("name")] public string Name { get; private set; }
 		[J("shortDescription")] public string ShortDescription { get; private set; }
 		[J("description")] public string Description { get; private set; }
 		[J("set")] public string Set { get; private set; }
+		[J("setText")] public string SetText { get; private set; }
 		[J("series")] public string Series { get; private set; }
 		[J("backendSeries")] public string BackendSeries { get; private set; }
 		[J("images")] public BrCosmeticImages Images { get; private set; }
@@ -31,6 +33,7 @@ namespace Fortnite_API.Objects
 		[J("added")] public DateTime Added { get; private set; }
 
 		[I]public bool HasSet => Set != null;
+		[I]public bool HasSetText => SetText != null;
 		[I]public bool HasSeries => Series != null;
 		[I]public bool HasDisplayAssetPath => DisplayAssetPath != null;
 		[I]public bool HasDefinition => Definition != null;
