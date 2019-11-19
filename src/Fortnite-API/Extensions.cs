@@ -245,6 +245,5 @@ namespace Fortnite_API
 
 			return request;
 		}
-
 	}
 }

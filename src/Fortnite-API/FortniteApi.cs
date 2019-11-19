@@ -1,4 +1,6 @@
-﻿using Fortnite_API.Endpoints;
+﻿using System.Reflection;
+
+using Fortnite_API.Endpoints;
 
 using RestSharp;
 
@@ -13,9 +15,10 @@ namespace Fortnite_API
 
 		public FortniteApi(string apiKey = null)
 		{
+			var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
 			var _client = new RestClient("https://fortnite-api.com/")
 			{
-				UserAgent = "FortniteApi.Net (v1.0.0)",
+				UserAgent = $"Fortnite-API.NET/{currentVersion.ToString(3)}",
 				Timeout = 10 * 1000
 			}.UseSerializer<JsonNetSerializer>();
 
