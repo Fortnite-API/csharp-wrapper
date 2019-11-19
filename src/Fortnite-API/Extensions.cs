@@ -130,6 +130,12 @@ namespace Fortnite_API
 				request.AddQueryParameter("rarity", searchProperties.Rarity.Value.GetString());
 			}
 
+			if (searchProperties.DisplayRarity.HasValue)
+			{
+				hasOneOrMoreParameters = true;
+				request.AddQueryParameter("displayRarity", searchProperties.DisplayRarity.Value);
+			}
+
 			if (searchProperties.BackendRarity.HasValue)
 			{
 				hasOneOrMoreParameters = true;
@@ -158,6 +164,12 @@ namespace Fortnite_API
 			{
 				hasOneOrMoreParameters = true;
 				request.AddQueryParameter("set", searchProperties.Set.Value);
+			}
+
+			if (searchProperties.SetText.HasValue)
+			{
+				hasOneOrMoreParameters = true;
+				request.AddQueryParameter("setText", searchProperties.SetText.Value);
 			}
 
 			if (searchProperties.Series.HasValue)

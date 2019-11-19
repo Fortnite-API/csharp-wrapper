@@ -8,11 +8,13 @@
 		public Optional<BrCosmeticType> Type { get; set; }
 		public Optional<string> BackendType { get; set; }
 		public Optional<BrCosmeticRarity> Rarity { get; set; }
+		public Optional<string> DisplayRarity { get; set; }
 		public Optional<string> BackendRarity { get; set; }
 		public Optional<string> Name { get; set; }
 		public Optional<string> ShortDescription { get; set; }
 		public Optional<string> Description { get; set; }
 		public Optional<string> Set { get; set; }
+		public Optional<string> SetText { get; set; }
 		public Optional<string> Series { get; set; }
 		public Optional<string> BackendSeries { get; set; }
 		public Optional<bool> HasSmallIcon { get; set; }
