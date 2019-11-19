@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -14,7 +14,7 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <Authors>Fortnite-API, NotOfficer</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Company>Fortnite-API</Company>
     <PackageIconUrl>https://fortnite-api.com/logo.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
