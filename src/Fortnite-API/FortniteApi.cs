@@ -13,6 +13,7 @@ namespace Fortnite_API
 		public CosmeticsEndpoints Cosmetics { get; }
 		public ShopEndpoints Shop { get; }
 		public NewsEndpoints News { get; }
+		public CreatorcodeEndpoints CreatorCode { get; }
 
 		public FortniteApi(string apiKey)
 		{
@@ -40,6 +41,7 @@ namespace Fortnite_API
 			Cosmetics = new CosmeticsEndpoints(_client);
 			Shop = new ShopEndpoints(_client);
 			News = new NewsEndpoints(_client);
+			CreatorCode = new CreatorcodeEndpoints(_client);
 		}
 	}
 }

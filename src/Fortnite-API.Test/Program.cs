@@ -9,7 +9,8 @@ namespace Fortnite_API.Test
 	{
 		private static async Task Main()
 		{
-			var api = new FortniteApi();
+			const string apiKey = "api-key";
+			var api = new FortniteApi(apiKey);
 
 			var cosmetics = await api.Cosmetics.GetBrAsync(GameLanguage.DE);
 			await Task.Delay(500);
