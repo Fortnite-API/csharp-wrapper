@@ -9,9 +9,9 @@ namespace Fortnite_API
 	public class FortniteApi
 	{
 		//private readonly IRestClient _client;
-		public readonly CosmeticsEndpoints Cosmetics;
-		public readonly ShopEndpoints Shop;
-		public readonly NewsEndpoints News;
+		public CosmeticsEndpoints Cosmetics { get; }
+		public ShopEndpoints Shop { get; }
+		public NewsEndpoints News { get; }
 
 		public FortniteApi(string apiKey = null)
 		{
