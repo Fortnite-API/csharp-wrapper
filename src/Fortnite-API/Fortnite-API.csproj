@@ -19,6 +19,8 @@
     <PackageIconUrl>https://fortnite-api.com/logo.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright (c) 2019 Fortnite-API.com</Copyright>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
