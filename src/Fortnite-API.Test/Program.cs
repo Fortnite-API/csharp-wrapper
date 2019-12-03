@@ -12,6 +12,13 @@ namespace Fortnite_API.Test
 			const string apiKey = "api-key";
 			var api = new FortniteApi(apiKey);
 
+			var tfueCode = await api.CreatorCode.GetAsync("tfue");
+			await Task.Delay(500);
+			var searchTestCode = await api.CreatorCode.SearchAsync("test");
+			await Task.Delay(500);
+			var searchAllTestCode = await api.CreatorCode.SearchAllAsync("test");
+			await Task.Delay(500);
+
 			var cosmetics = await api.Cosmetics.GetBrAsync(GameLanguage.DE);
 			await Task.Delay(500);
 
