@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 using Fortnite_API.Endpoints;
 
@@ -13,19 +14,28 @@ namespace Fortnite_API
 		public ShopEndpoints Shop { get; }
 		public NewsEndpoints News { get; }
 
-		public FortniteApi(string apiKey = null)
+		public FortniteApi(string apiKey)
 		{
+			if (apiKey == null)
+			{
+				throw new ArgumentNullException(nameof(apiKey));
+			}
+
+			if (apiKey.Length == 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(apiKey));
+			}
+
 			var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
 			var _client = new RestClient("https://fortnite-api.com/")
 			{
 				UserAgent = $"Fortnite-API.NET/{currentVersion.ToString(3)}",
-				Timeout = 10 * 1000
+				Timeout = 10 * 1000,
+				DefaultParameters =
+				{
+					new Parameter("x-api-key", apiKey, ParameterType.HttpHeader)
+				}
 			}.UseSerializer<JsonNetSerializer>();
-
-			if (!string.IsNullOrWhiteSpace(apiKey))
-			{
-				_client.DefaultParameters.Add(new Parameter("x-api-key", apiKey, ParameterType.HttpHeader));
-			}
 
 			Cosmetics = new CosmeticsEndpoints(_client);
 			Shop = new ShopEndpoints(_client);
