@@ -10,6 +10,7 @@ namespace Fortnite_API.Objects
 		[J("language")] public string Language;
 		[J("title")] public string Title;
 		[J("lastModified")] public DateTime LastModified;
+		[J("motds")] public List<NewsMotd> Motds;
 		[J("messages")] public List<NewsMessage> Messages;
 
 		public bool Equals(News other)
@@ -39,23 +40,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is News news)
+			if (obj.GetType() != typeof(News))
 			{
-				return Equals(news);
+				return false;
 			}
 
-			return false;
+			return Equals((News)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				var hashCode = Language.GetHashCode();
-				hashCode = hashCode * 397 ^ Title.GetHashCode();
-				hashCode = hashCode * 397 ^ LastModified.GetHashCode();
-				return hashCode;
-			}
+			return HashCode.Combine(Language, Title, LastModified);
 		}
 
 		public static bool operator ==(News left, News right)
