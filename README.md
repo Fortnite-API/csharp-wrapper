@@ -39,6 +39,9 @@ api.Cosmetics...
 
 // accesses the news endpoint (https://fortnite-api.com/news)
 api.News...
+
+// accesses the creatorcode endpoint (https://fortnite-api.com/creatorcode)
+api.CreatorCode...
 ```
 
 ### Contribute
