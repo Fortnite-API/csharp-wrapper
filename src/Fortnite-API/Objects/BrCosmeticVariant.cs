@@ -7,6 +7,7 @@ namespace Fortnite_API.Objects
 {
 	public class BrCosmeticVariant : IEquatable<BrCosmeticVariant>
 	{
+		[J("channel")] public string Channel { get; private set; }
 		[J("type")] public string Type { get; private set; }
 		[J("options")] public List<BrCosmeticVariantOption> Options { get; private set; }
 
@@ -37,6 +38,33 @@ namespace Fortnite_API.Objects
 			return false;
 		}
 
+		public bool TryGetVariantOptionByTag(string optionTag, out BrCosmeticVariantOption outOption)
+		{
+			if (optionTag == null)
+			{
+				throw new ArgumentNullException(nameof(optionTag));
+			}
+
+			if (optionTag.Length == 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(optionTag));
+			}
+
+			foreach (var option in Options)
+			{
+				if (!string.Equals(option.Tag, optionTag, StringComparison.OrdinalIgnoreCase))
+				{
+					continue;
+				}
+
+				outOption = option;
+				return true;
+			}
+
+			outOption = null;
+			return false;
+		}
+
 		public bool Equals(BrCosmeticVariant other)
 		{
 			if (ReferenceEquals(null, other))
@@ -49,7 +77,7 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			return Type == other.Type && Equals(Options, other.Options);
+			return Channel == other.Channel && Type == other.Type && Equals(Options, other.Options);
 		}
 
 		public override bool Equals(object obj)
@@ -64,20 +92,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is BrCosmeticVariant brCosmeticVariant)
+			if (obj.GetType() != typeof(BrCosmeticVariant))
 			{
-				return Equals(brCosmeticVariant);
+				return false;
 			}
 
-			return false;
+			return Equals((BrCosmeticVariant)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				return (Type != null ? Type.GetHashCode() : 0) * 397 ^ (Options != null ? Options.GetHashCode() : 0);
-			}
+			return HashCode.Combine(Channel, Type, Options);
 		}
 
 		public static bool operator ==(BrCosmeticVariant left, BrCosmeticVariant right)
