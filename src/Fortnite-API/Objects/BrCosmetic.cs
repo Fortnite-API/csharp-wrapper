@@ -57,19 +57,23 @@ namespace Fortnite_API.Objects
 			return HasGameplayTags && GameplayTags.Contains(gameplayTag);
 		}
 
-		public bool TryGetVariant(string type, out BrCosmeticVariant outVariant)
+		public bool TryGetVariant(string variantType, out BrCosmeticVariant outVariant)
 		{
-			if (!HasVariants)
+			if (variantType == null)
 			{
-				outVariant = null;
-				return false;
+				throw new ArgumentNullException(nameof(variantType));
 			}
 
-			foreach (var variant in Variants)
+			if (variantType.Length == 0)
 			{
-				if (string.IsNullOrWhiteSpace(type))
+				throw new ArgumentOutOfRangeException(nameof(variantType));
+			}
+
+			if (HasVariants)
+			{
+				foreach (var variant in Variants)
 				{
-					if (variant.Type != null)
+					if (!string.Equals(variant.Type, variantType, StringComparison.OrdinalIgnoreCase))
 					{
 						continue;
 					}
@@ -77,14 +81,36 @@ namespace Fortnite_API.Objects
 					outVariant = variant;
 					return true;
 				}
+			}
 
-				if (!string.Equals(variant.Type, type, StringComparison.OrdinalIgnoreCase))
+			outVariant = null;
+			return false;
+		}
+
+		public bool TryGetVariantByChannel(string variantChannel, out BrCosmeticVariant outVariant)
+		{
+			if (variantChannel == null)
+			{
+				throw new ArgumentNullException(nameof(variantChannel));
+			}
+
+			if (variantChannel.Length == 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(variantChannel));
+			}
+
+			if (HasVariants)
+			{
+				foreach (var variant in Variants)
 				{
-					continue;
-				}
+					if (!string.Equals(variant.Channel, variantChannel, StringComparison.OrdinalIgnoreCase))
+					{
+						continue;
+					}
 
-				outVariant = variant;
-				return true;
+					outVariant = variant;
+					return true;
+				}
 			}
 
 			outVariant = null;
@@ -103,22 +129,32 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			return Id == other.Id;
+			return Id == other.Id && Path == other.Path && LastUpdate.Equals(other.LastUpdate) && Added.Equals(other.Added);
 		}
 
 		public override bool Equals(object obj)
 		{
-			if (obj is BrCosmetic brCosmetic)
+			if (ReferenceEquals(null, obj))
 			{
-				return Equals(brCosmetic);
+				return false;
 			}
 
-			return false;
+			if (ReferenceEquals(this, obj))
+			{
+				return true;
+			}
+
+			if (obj.GetType() != typeof(BrCosmetic))
+			{
+				return false;
+			}
+
+			return Equals((BrCosmetic)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return Id.GetHashCode();
+			return HashCode.Combine(Id, Path, LastUpdate, Added);
 		}
 
 		public static bool operator ==(BrCosmetic left, BrCosmetic right)
