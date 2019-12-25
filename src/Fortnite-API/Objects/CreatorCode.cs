@@ -39,25 +39,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is CreatorCode creatorCode)
+			if (obj.GetType() != typeof(CreatorCode))
 			{
-				return Equals(creatorCode);
+				return false;
 			}
 
-			return false;
+			return Equals((CreatorCode)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				var hashCode = Id.GetHashCode();
-				hashCode = hashCode * 397 ^ Slug.GetHashCode();
-				hashCode = hashCode * 397 ^ DisplayName.GetHashCode();
-				hashCode = hashCode * 397 ^ Status.GetHashCode();
-				hashCode = hashCode * 397 ^ Verified.GetHashCode();
-				return hashCode;
-			}
+			return HashCode.Combine(Id, Slug, DisplayName, Status, Verified);
 		}
 
 		public static bool operator ==(CreatorCode left, CreatorCode right)

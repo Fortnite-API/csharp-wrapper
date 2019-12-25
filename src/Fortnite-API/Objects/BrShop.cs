@@ -8,12 +8,12 @@ namespace Fortnite_API.Objects
 {
 	public class BrShop : IEquatable<BrShop>
 	{
-		[J("hash")] public string Hash;
-		[J("date")] public DateTime Date;
-		[J("featured")] public List<BrShopEntry> Featured;
-		[J("daily")] public List<BrShopEntry> Daily;
-		[J("votes")] public List<BrShopEntry> Votes;
-		[J("voteWinners")] public List<BrShopEntry> VoteWinners;
+		[J("hash")] public string Hash { get; private set; }
+		[J("date")] public DateTime Date { get; private set; }
+		[J("featured")] public List<BrShopEntry> Featured { get; private set; }
+		[J("daily")] public List<BrShopEntry> Daily { get; private set; }
+		[J("votes")] public List<BrShopEntry> Votes { get; private set; }
+		[J("voteWinners")] public List<BrShopEntry> VoteWinners { get; private set; }
 
 		[I] public bool HasFeaturedEntries => Featured != null && Featured.Count > 0;
 		[I] public bool HasDailyEntries => Daily != null && Daily.Count > 0;
@@ -32,7 +32,7 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			return Hash == other.Hash;
+			return Hash == other.Hash && Date.Equals(other.Date);
 		}
 
 		public override bool Equals(object obj)
@@ -47,17 +47,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is BrShop brShop)
+			if (obj.GetType() != typeof(BrShop))
 			{
-				return Equals(brShop);
+				return false;
 			}
 
-			return false;
+			return Equals((BrShop)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return Hash.GetHashCode();
+			return HashCode.Combine(Hash, Date);
 		}
 
 		public static bool operator ==(BrShop left, BrShop right)

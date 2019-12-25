@@ -21,7 +21,7 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			return Hash == other.Hash && Url.Equals(other.Url);
+			return Hash == other.Hash && Equals(Url, other.Url);
 		}
 
 		public override bool Equals(object obj)
@@ -36,20 +36,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is ApiImage apiImage)
+			if (obj.GetType() != typeof(ApiImage))
 			{
-				return Equals(apiImage);
+				return false;
 			}
 
-			return false;
+			return Equals((ApiImage)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				return Hash.GetHashCode() * 397 ^ Url.GetHashCode();
-			}
+			return HashCode.Combine(Hash, Url);
 		}
 
 		public static bool operator ==(ApiImage left, ApiImage right)

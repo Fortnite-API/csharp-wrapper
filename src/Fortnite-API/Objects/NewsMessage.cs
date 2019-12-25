@@ -6,14 +6,14 @@ namespace Fortnite_API.Objects
 {
 	public class NewsMessage : IEquatable<NewsMessage>
 	{
-		[J("image")] public Uri ImageUrl;
-		[J("hidden")] public bool Hidden;
-		[J("messageType")] public string MessageType;
-		[J("type")] public string Type;
-		[J("adspace")] public string Adspace;
-		[J("title")] public string Title;
-		[J("body")] public string Body;
-		[J("spotlight")] public bool Spotlight;
+		[J("image")] public Uri ImageUrl { get; private set; }
+		[J("hidden")] public bool Hidden { get; private set; }
+		[J("messageType")] public string MessageType { get; private set; }
+		[J("type")] public string Type { get; private set; }
+		[J("adspace")] public string Adspace { get; private set; }
+		[J("title")] public string Title { get; private set; }
+		[J("body")] public string Body { get; private set; }
+		[J("spotlight")] public bool Spotlight { get; private set; }
 
 		public bool Equals(NewsMessage other)
 		{
@@ -42,28 +42,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is NewsMessage newsMessage)
+			if (obj.GetType() != typeof(NewsMessage))
 			{
-				return Equals(newsMessage);
+				return false;
 			}
 
-			return false;
+			return Equals((NewsMessage)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				var hashCode = ImageUrl != null ? ImageUrl.GetHashCode() : 0;
-				hashCode = hashCode * 397 ^ Hidden.GetHashCode();
-				hashCode = hashCode * 397 ^ (MessageType != null ? MessageType.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Type != null ? Type.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Adspace != null ? Adspace.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Title != null ? Title.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Body != null ? Body.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ Spotlight.GetHashCode();
-				return hashCode;
-			}
+			return HashCode.Combine(ImageUrl, Hidden, MessageType, Type, Adspace, Title, Body, Spotlight);
 		}
 
 		public static bool operator ==(NewsMessage left, NewsMessage right)

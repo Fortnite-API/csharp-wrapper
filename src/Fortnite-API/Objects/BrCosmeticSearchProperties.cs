@@ -2,9 +2,9 @@
 {
 	public class BrCosmeticSearchProperties
 	{
-		public Optional<GameLanguage> Language;
-		public Optional<GameLanguage> SearchLanguage;
-		public Optional<MatchMethod> MatchMethod;
+		public Optional<GameLanguage> Language { get; set; }
+		public Optional<GameLanguage> SearchLanguage { get; set; }
+		public Optional<MatchMethod> MatchMethod { get; set; }
 		public Optional<BrCosmeticType> Type { get; set; }
 		public Optional<string> BackendType { get; set; }
 		public Optional<BrCosmeticRarity> Rarity { get; set; }

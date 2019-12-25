@@ -48,26 +48,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is BrCosmeticImages brCosmeticImages)
+			if (obj.GetType() != typeof(BrCosmeticImages))
 			{
-				return Equals(brCosmeticImages);
+				return false;
 			}
 
-			return false;
+			return Equals((BrCosmeticImages)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				var hashCode = SmallIcon != null ? SmallIcon.GetHashCode() : 0;
-				hashCode = hashCode * 397 ^ (Icon != null ? Icon.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Featured != null ? Featured.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Background != null ? Background.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (CoverArt != null ? CoverArt.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Decal != null ? Decal.GetHashCode() : 0);
-				return hashCode;
-			}
+			return HashCode.Combine(SmallIcon, Icon, Featured, Background, CoverArt, Decal);
 		}
 
 		public static bool operator ==(BrCosmeticImages left, BrCosmeticImages right)

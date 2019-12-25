@@ -6,6 +6,7 @@ namespace Fortnite_API.Objects
 {
 	public class BrCosmeticVariantOption : IEquatable<BrCosmeticVariantOption>
 	{
+		[J("tag")] public string Tag { get; private set; }
 		[J("name")] public string Name { get; private set; }
 		[J("image")] public ApiImage Image { get; private set; }
 
@@ -21,7 +22,7 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			return Name == other.Name && Image.Equals(other.Image);
+			return Tag == other.Tag && Name == other.Name && Equals(Image, other.Image);
 		}
 
 		public override bool Equals(object obj)
@@ -36,20 +37,17 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj is BrCosmeticVariantOption brCosmeticVariantOption)
+			if (obj.GetType() != typeof(BrCosmeticVariantOption))
 			{
-				return Equals(brCosmeticVariantOption);
+				return false;
 			}
 
-			return false;
+			return Equals((BrCosmeticVariantOption)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				return Name.GetHashCode() * 397 ^ Image.GetHashCode();
-			}
+			return HashCode.Combine(Tag, Name, Image);
 		}
 
 		public static bool operator ==(BrCosmeticVariantOption left, BrCosmeticVariantOption right)
