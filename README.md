@@ -42,6 +42,9 @@ api.News...
 
 // accesses the creatorcode endpoint (https://fortnite-api.com/creatorcode)
 api.CreatorCode...
+
+// accesses the aes endpoint (https://fortnite-api.com/aes)
+api.Aes...
 ```
 
 ### Contribute
