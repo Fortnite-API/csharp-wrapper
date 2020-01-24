@@ -9,9 +9,11 @@ namespace Fortnite_API.Test
 	{
 		private static async Task Main()
 		{
-			const string apiKey = "api-key";
+			const string apiKey = "your-api-key";
 			var api = new FortniteApi(apiKey);
 
+			var aes = await api.Aes.GetAsync();
+			await Task.Delay(500);
 			var tfueCode = await api.CreatorCode.GetAsync("tfue");
 			await Task.Delay(500);
 			var searchTestCode = await api.CreatorCode.SearchAsync("test");
