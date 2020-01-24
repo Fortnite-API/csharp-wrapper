@@ -30,7 +30,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentOutOfRangeException(nameof(slug));
 			}
 
-			var request = new RestRequest("/creatorcode", Method.GET)
+			var request = new RestRequest("creatorcode", Method.GET)
 			{
 				Parameters =
 				{
@@ -59,7 +59,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentOutOfRangeException(nameof(slug));
 			}
 
-			var request = new RestRequest("/creatorcode/search", Method.GET)
+			var request = new RestRequest("creatorcode/search", Method.GET)
 			{
 				Parameters =
 				{
@@ -88,7 +88,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentOutOfRangeException(nameof(slug));
 			}
 
-			var request = new RestRequest("/creatorcode/search/all", Method.GET)
+			var request = new RestRequest("creatorcode/search/all", Method.GET)
 			{
 				Parameters =
 				{

@@ -15,10 +15,10 @@ namespace Fortnite_API.Objects
 		[J("votes")] public List<BrShopEntry> Votes { get; private set; }
 		[J("voteWinners")] public List<BrShopEntry> VoteWinners { get; private set; }
 
-		[I] public bool HasFeaturedEntries => Featured != null && Featured.Count > 0;
-		[I] public bool HasDailyEntries => Daily != null && Daily.Count > 0;
-		[I] public bool HasVoteEntries => Votes != null && Votes.Count > 0;
-		[I] public bool HasVoteWinnerEntries => VoteWinners != null && VoteWinners.Count > 0;
+		[I]public bool HasFeaturedEntries => Featured != null && Featured.Count > 0;
+		[I]public bool HasDailyEntries => Daily != null && Daily.Count > 0;
+		[I]public bool HasVoteEntries => Votes != null && Votes.Count > 0;
+		[I]public bool HasVoteWinnerEntries => VoteWinners != null && VoteWinners.Count > 0;
 
 		public bool Equals(BrShop other)
 		{

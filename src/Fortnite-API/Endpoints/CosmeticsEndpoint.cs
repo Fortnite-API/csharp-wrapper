@@ -20,7 +20,7 @@ namespace Fortnite_API.Endpoints
 
 		public async Task<ApiResponse<List<BrCosmetic>>> GetBrAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
-			var request = new RestRequest("/cosmetics/br", Method.GET);
+			var request = new RestRequest("cosmetics/br", Method.GET);
 
 			if (language.HasValue)
 			{
@@ -48,7 +48,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentOutOfRangeException(nameof(cosmeticId));
 			}
 
-			var request = new RestRequest($"/cosmetics/br/{cosmeticId}", Method.GET);
+			var request = new RestRequest($"cosmetics/br/{cosmeticId}", Method.GET);
 
 			if (language.HasValue)
 			{
@@ -71,7 +71,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentNullException(nameof(cosmeticIds));
 			}
 
-			var request = new RestRequest("/cosmetics/br/search/ids", Method.GET);
+			var request = new RestRequest("cosmetics/br/search/ids", Method.GET);
 			var isArrayEmpty = true;
 
 			foreach (var cosmeticId in cosmeticIds)
@@ -106,7 +106,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentNullException(nameof(func));
 			}
 
-			var request = new RestRequest("/cosmetics/br/search", Method.GET).ApplySearchParameters(func);
+			var request = new RestRequest("cosmetics/br/search", Method.GET).ApplySearchParameters(func);
 			var response = await _client.ExecuteTaskAsync<ApiResponse<BrCosmetic>>(request, token).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -123,7 +123,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentNullException(nameof(func));
 			}
 
-			var request = new RestRequest("/cosmetics/br/search/all", Method.GET).ApplySearchParameters(func);
+			var request = new RestRequest("cosmetics/br/search/all", Method.GET).ApplySearchParameters(func);
 			var response = await _client.ExecuteTaskAsync<ApiResponse<List<BrCosmetic>>>(request, token).ConfigureAwait(false);
 			return response.Data;
 		}

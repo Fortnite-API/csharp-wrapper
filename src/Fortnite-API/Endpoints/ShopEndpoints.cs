@@ -18,7 +18,7 @@ namespace Fortnite_API.Endpoints
 
 		public async Task<ApiResponse<BrShop>> GetBrAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
-			var request = new RestRequest("/shop/br", Method.GET);
+			var request = new RestRequest("shop/br", Method.GET);
 
 			if (language.HasValue)
 			{

@@ -14,12 +14,12 @@ namespace Fortnite_API.Objects
 		[J("coverArt")] public ApiImage CoverArt { get; private set; }
 		[J("decal")] public ApiImage Decal { get; private set; }
 
-		[I] public bool HasSmallIcon => SmallIcon != null;
-		[I] public bool HasIcon => Icon != null;
-		[I] public bool HasFeatured => Featured != null;
-		[I] public bool HasBackground => Background != null;
-		[I] public bool HasCoverArt => CoverArt != null;
-		[I] public bool HasDecal => Decal != null;
+		[I]public bool HasSmallIcon => SmallIcon != null;
+		[I]public bool HasIcon => Icon != null;
+		[I]public bool HasFeatured => Featured != null;
+		[I]public bool HasBackground => Background != null;
+		[I]public bool HasCoverArt => CoverArt != null;
+		[I]public bool HasDecal => Decal != null;
 
 		public bool Equals(BrCosmeticImages other)
 		{

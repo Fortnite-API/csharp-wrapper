@@ -10,7 +10,7 @@ namespace Fortnite_API.Objects
 		[J("data", NullValueHandling = N.Ignore)] public T Data { get; private set; }
 		[J("error", NullValueHandling = N.Ignore)] public string Error { get; private set; }
 
-		[I] public bool IsSuccess => Status == 200;
-		[I] public bool HasError => Error != null;
+		[I]public bool IsSuccess => Status == 200;
+		[I]public bool HasError => Error != null;
 	}
 }

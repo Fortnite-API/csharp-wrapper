@@ -32,15 +32,15 @@ namespace Fortnite_API.Objects
 		[J("lastUpdate")] public DateTime LastUpdate { get; private set; }
 		[J("added")] public DateTime Added { get; private set; }
 
-		[I] public bool HasSet => Set != null;
-		[I] public bool HasSetText => SetText != null;
-		[I] public bool HasSeries => Series != null;
-		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;
-		[I] public bool HasDefinition => Definition != null;
-		[I] public bool HasRequiredItemId => RequiredItemId != null;
-		[I] public bool HasBuiltInEmoteId => BuiltInEmoteId != null;
-		[I] public bool HasVariants => Variants != null && Variants.Count != 0;
-		[I] public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
+		[I]public bool HasSet => Set != null;
+		[I]public bool HasSetText => SetText != null;
+		[I]public bool HasSeries => Series != null;
+		[I]public bool HasDisplayAssetPath => DisplayAssetPath != null;
+		[I]public bool HasDefinition => Definition != null;
+		[I]public bool HasRequiredItemId => RequiredItemId != null;
+		[I]public bool HasBuiltInEmoteId => BuiltInEmoteId != null;
+		[I]public bool HasVariants => Variants != null && Variants.Count != 0;
+		[I]public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
 
 		public bool HasGameplayTag(string gameplayTag)
 		{

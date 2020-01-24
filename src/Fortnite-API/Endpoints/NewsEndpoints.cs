@@ -18,7 +18,7 @@ namespace Fortnite_API.Endpoints
 
 		public async Task<ApiResponse<CombinedNews>> GetAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
-			var request = new RestRequest("/news", Method.GET);
+			var request = new RestRequest("news", Method.GET);
 
 			if (language.HasValue)
 			{
@@ -47,7 +47,7 @@ namespace Fortnite_API.Endpoints
 
 		public Task<ApiResponse<News>> GetBrAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
-			var request = new RestRequest("/news/br", Method.GET);
+			var request = new RestRequest("news/br", Method.GET);
 			return GetNewsAsync(request, language, token);
 		}
 
@@ -58,7 +58,7 @@ namespace Fortnite_API.Endpoints
 
 		public Task<ApiResponse<News>> GetStwAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
-			var request = new RestRequest("/news/stw", Method.GET);
+			var request = new RestRequest("news/stw", Method.GET);
 			return GetNewsAsync(request, language, token);
 		}
 
@@ -69,7 +69,7 @@ namespace Fortnite_API.Endpoints
 
 		public Task<ApiResponse<News>> GetCreativeAsync(GameLanguage? language = null, CancellationToken token = default)
 		{
-			var request = new RestRequest("/news/creative", Method.GET);
+			var request = new RestRequest("news/creative", Method.GET);
 			return GetNewsAsync(request, language, token);
 		}
 
