@@ -14,6 +14,7 @@ namespace Fortnite_API
 		public ShopEndpoints Shop { get; }
 		public NewsEndpoints News { get; }
 		public CreatorcodeEndpoints CreatorCode { get; }
+		public AesEndpoint Aes { get; }
 
 		public FortniteApi(string apiKey)
 		{
@@ -27,10 +28,9 @@ namespace Fortnite_API
 				throw new ArgumentOutOfRangeException(nameof(apiKey));
 			}
 
-			var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
 			var _client = new RestClient("https://fortnite-api.com/")
 			{
-				UserAgent = $"Fortnite-API.NET/{currentVersion.ToString(3)}",
+				UserAgent = $"Fortnite-API.NET/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
 				Timeout = 10 * 1000,
 				DefaultParameters =
 				{
@@ -42,6 +42,7 @@ namespace Fortnite_API
 			Shop = new ShopEndpoints(_client);
 			News = new NewsEndpoints(_client);
 			CreatorCode = new CreatorcodeEndpoints(_client);
+			Aes = new AesEndpoint(_client);
 		}
 	}
 }
