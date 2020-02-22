@@ -20,6 +20,7 @@ namespace Fortnite_API.Objects
 		[EnumMember(Value = "music")] Music,
 		[EnumMember(Value = "pet")] Pet,
 		[EnumMember(Value = "pickaxe")] Pickaxe,
+		[EnumMember(Value = "shout")] Shout,
 		[EnumMember(Value = "spray")] Spray,
 		[EnumMember(Value = "toy")] Toy
 	}
