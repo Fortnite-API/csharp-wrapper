@@ -8,19 +8,20 @@
     <Product>Fortnite-API-Wrapper</Product>
     <PackageProjectUrl>https://fortnite-api.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Fortnite-API/csharp-wrapper</RepositoryUrl>
-    <NeutralLanguage />
+    <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>fortnite, fortniteapi, fortnite-api, fortnite-api.com</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression></PackageLicenseExpression>
     <Authors>Fortnite-API, NotOfficer</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <Company>Fortnite-API</Company>
-    <PackageIconUrl>https://fortnite-api.com/logo.png</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <RepositoryType>git</RepositoryType>
-    <Copyright>Copyright (c) 2019 Fortnite-API.com</Copyright>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
-    <FileVersion>1.0.5.0</FileVersion>
+    <Copyright>Copyright (c) 2020 Fortnite-API.com</Copyright>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -37,10 +38,14 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="RestSharp" Version="106.6.10" />
+    <PackageReference Include="RestSharp" Version="106.10.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\..\..\..\Pictures\Fortnite-API\gold\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
