@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 using Fortnite_API.Objects;
+using Fortnite_API.Objects.V1;
 
 using RestSharp;
 
@@ -10,90 +12,145 @@ namespace Fortnite_API
 	{
 		public static string GetLanguageCode(this GameLanguage language)
 		{
-			return language switch
+			switch (language)
 			{
-				GameLanguage.EN => "en",
-				GameLanguage.AR => "ar",
-				GameLanguage.DE => "de",
-				GameLanguage.ES_419 => "es-419",
-				GameLanguage.ES => "es",
-				GameLanguage.FR => "fr",
-				GameLanguage.IT => "it",
-				GameLanguage.JA => "ja",
-				GameLanguage.KO => "ko",
-				GameLanguage.PL => "pl",
-				GameLanguage.PT_BR => "pt-BR",
-				GameLanguage.RU => "ru",
-				GameLanguage.TR => "tr",
-				GameLanguage.ZH_CN => "zh-CN",
-				GameLanguage.ZH_HANT => "zh-Hant",
-				_ => throw new ArgumentOutOfRangeException(nameof(language))
-			};
+				case GameLanguage.EN:
+					return "en";
+				case GameLanguage.AR:
+					return "ar";
+				case GameLanguage.DE:
+					return "de";
+				case GameLanguage.ES_419:
+					return "es-419";
+				case GameLanguage.ES:
+					return "es";
+				case GameLanguage.FR:
+					return "fr";
+				case GameLanguage.IT:
+					return "it";
+				case GameLanguage.JA:
+					return "ja";
+				case GameLanguage.KO:
+					return "ko";
+				case GameLanguage.PL:
+					return "pl";
+				case GameLanguage.PT_BR:
+					return "pt-BR";
+				case GameLanguage.RU:
+					return "ru";
+				case GameLanguage.TR:
+					return "tr";
+				case GameLanguage.ZH_CN:
+					return "zh-CN";
+				case GameLanguage.ZH_HANT:
+					return "zh-Hant";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(language));
+			}
 		}
 
 		public static string GetString(this MatchMethod matchMethod)
 		{
-			return matchMethod switch
+			switch (matchMethod)
 			{
-				MatchMethod.Full => "full",
-				MatchMethod.Contains => "contains",
-				MatchMethod.Starts => "starts",
-				MatchMethod.Ends => "ends",
-				_ => throw new ArgumentOutOfRangeException(nameof(matchMethod))
-			};
+				case MatchMethod.Full:
+					return "full";
+				case MatchMethod.Contains:
+					return "contains";
+				case MatchMethod.Starts:
+					return "starts";
+				case MatchMethod.Ends:
+					return "ends";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(matchMethod), matchMethod, null);
+			}
 		}
 
-		public static string GetString(this BrCosmeticType brCosmeticType)
+		public static string GetString(this BrCosmeticV1Type brCosmeticType)
 		{
-			return brCosmeticType switch
+			switch (brCosmeticType)
 			{
-				BrCosmeticType.Banner => "banner",
-				BrCosmeticType.Backpack => "backpack",
-				BrCosmeticType.Contrail => "contrail",
-				BrCosmeticType.Outfit => "outfit",
-				BrCosmeticType.Emote => "emote",
-				BrCosmeticType.Emoji => "emoji",
-				BrCosmeticType.Glider => "glider",
-				BrCosmeticType.Wrap => "wrap",
-				BrCosmeticType.LoadingScreen => "loadingscreen",
-				BrCosmeticType.Music => "music",
-				BrCosmeticType.Pet => "pet",
-				BrCosmeticType.Pickaxe => "pickaxe",
-				BrCosmeticType.Spray => "spray",
-				BrCosmeticType.Toy => "toy",
-				_ => throw new ArgumentOutOfRangeException(nameof(brCosmeticType))
-			};
+				case BrCosmeticV1Type.Banner:
+					return "banner";
+				case BrCosmeticV1Type.Backpack:
+					return "backpack";
+				case BrCosmeticV1Type.Contrail:
+					return "contrail";
+				case BrCosmeticV1Type.Outfit:
+					return "outfit";
+				case BrCosmeticV1Type.Emote:
+					return "emote";
+				case BrCosmeticV1Type.Emoji:
+					return "emoji";
+				case BrCosmeticV1Type.Glider:
+					return "glider";
+				case BrCosmeticV1Type.Wrap:
+					return "wrap";
+				case BrCosmeticV1Type.LoadingScreen:
+					return "loadingscreen";
+				case BrCosmeticV1Type.Music:
+					return "music";
+				case BrCosmeticV1Type.Pet:
+					return "pet";
+				case BrCosmeticV1Type.Pickaxe:
+					return "pickaxe";
+				case BrCosmeticV1Type.Spray:
+					return "spray";
+				case BrCosmeticV1Type.Toy:
+					return "toy";
+				case BrCosmeticV1Type.Shout:
+					return "shout";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(brCosmeticType), brCosmeticType, null);
+			}
 		}
 
-		public static string GetString(this BrCosmeticRarity brCosmeticRarity)
+		public static string GetString(this BrCosmeticV1Rarity brCosmeticRarity)
 		{
-			return brCosmeticRarity switch
+			switch (brCosmeticRarity)
 			{
-				BrCosmeticRarity.Frozen => "frozen",
-				BrCosmeticRarity.Lava => "lava",
-				BrCosmeticRarity.Legendary => "legendary",
-				BrCosmeticRarity.Dark => "dark",
-				BrCosmeticRarity.StarWars => "starwars",
-				BrCosmeticRarity.Marvel => "marvel",
-				BrCosmeticRarity.DC => "dc",
-				BrCosmeticRarity.Icon => "icon",
-				BrCosmeticRarity.Shadow => "shadow",
-				BrCosmeticRarity.Epic => "epic",
-				BrCosmeticRarity.Rare => "rare",
-				BrCosmeticRarity.Uncommon => "uncommon",
-				BrCosmeticRarity.Common => "common",
-				_ => throw new ArgumentOutOfRangeException(nameof(brCosmeticRarity))
-			};
+				case BrCosmeticV1Rarity.Frozen:
+					return "frozen";
+				case BrCosmeticV1Rarity.Lava:
+					return "lava";
+				case BrCosmeticV1Rarity.Legendary:
+					return "legendary";
+				case BrCosmeticV1Rarity.Dark:
+					return "dark";
+				case BrCosmeticV1Rarity.StarWars:
+					return "starwars";
+				case BrCosmeticV1Rarity.Marvel:
+					return "marvel";
+				case BrCosmeticV1Rarity.DC:
+					return "dc";
+				case BrCosmeticV1Rarity.Icon:
+					return "icon";
+				case BrCosmeticV1Rarity.Shadow:
+					return "shadow";
+				case BrCosmeticV1Rarity.Epic:
+					return "epic";
+				case BrCosmeticV1Rarity.Rare:
+					return "rare";
+				case BrCosmeticV1Rarity.Uncommon:
+					return "uncommon";
+				case BrCosmeticV1Rarity.Common:
+					return "common";
+				case BrCosmeticV1Rarity.Slurp:
+					return "slurp";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(brCosmeticRarity), brCosmeticRarity, null);
+			}
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static string GetString(this bool boolean)
 		{
 			return boolean ? "true" : "false";
 		}
 
-		public static RestRequest ApplySearchParameters(this RestRequest request, Action<BrCosmeticSearchProperties> func)
+		public static RestRequest ApplySearchParameters(this RestRequest request, Action<BrCosmeticV1SearchProperties> func)
 		{
-			var searchProperties = new BrCosmeticSearchProperties();
+			var searchProperties = new BrCosmeticV1SearchProperties();
 			func(searchProperties);
 			var hasOneOrMoreParameters = false;
 

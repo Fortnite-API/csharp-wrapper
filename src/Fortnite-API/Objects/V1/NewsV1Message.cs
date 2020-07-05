@@ -2,9 +2,9 @@
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class NewsMessage : IEquatable<NewsMessage>
+	public class NewsV1Message : IEquatable<NewsV1Message>
 	{
 		[J("image")] public Uri ImageUrl { get; private set; }
 		[J("hidden")] public bool Hidden { get; private set; }
@@ -15,7 +15,7 @@ namespace Fortnite_API.Objects
 		[J("body")] public string Body { get; private set; }
 		[J("spotlight")] public bool Spotlight { get; private set; }
 
-		public bool Equals(NewsMessage other)
+		public bool Equals(NewsV1Message other)
 		{
 			if (ReferenceEquals(null, other))
 			{
@@ -42,25 +42,36 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj.GetType() != typeof(NewsMessage))
+			if (obj.GetType() != typeof(NewsV1Message))
 			{
 				return false;
 			}
 
-			return Equals((NewsMessage)obj);
+			return Equals((NewsV1Message)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(ImageUrl, Hidden, MessageType, Type, Adspace, Title, Body, Spotlight);
+			unchecked
+			{
+				var hashCode = ImageUrl != null ? ImageUrl.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ Hidden.GetHashCode();
+				hashCode = hashCode * 397 ^ (MessageType != null ? MessageType.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Type != null ? Type.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Adspace != null ? Adspace.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Title != null ? Title.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Body != null ? Body.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ Spotlight.GetHashCode();
+				return hashCode;
+			}
 		}
 
-		public static bool operator ==(NewsMessage left, NewsMessage right)
+		public static bool operator ==(NewsV1Message left, NewsV1Message right)
 		{
 			return Equals(left, right);
 		}
 
-		public static bool operator !=(NewsMessage left, NewsMessage right)
+		public static bool operator !=(NewsV1Message left, NewsV1Message right)
 		{
 			return !Equals(left, right);
 		}

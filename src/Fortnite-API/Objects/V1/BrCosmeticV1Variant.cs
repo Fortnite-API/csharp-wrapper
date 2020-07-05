@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class BrCosmeticVariant : IEquatable<BrCosmeticVariant>
+	public class BrCosmeticV1Variant : IEquatable<BrCosmeticV1Variant>
 	{
 		[J("channel")] public string Channel { get; private set; }
 		[J("type")] public string Type { get; private set; }
-		[J("options")] public List<BrCosmeticVariantOption> Options { get; private set; }
+		[J("options")] public List<BrCosmeticV1VariantOption> Options { get; private set; }
 
-		public bool TryGetVariantOption(string optionName, out BrCosmeticVariantOption outOption)
+		public bool TryGetVariantOption(string optionName, out BrCosmeticV1VariantOption outOption)
 		{
 			if (optionName == null)
 			{
@@ -38,7 +38,7 @@ namespace Fortnite_API.Objects
 			return false;
 		}
 
-		public bool TryGetVariantOptionByTag(string optionTag, out BrCosmeticVariantOption outOption)
+		public bool TryGetVariantOptionByTag(string optionTag, out BrCosmeticV1VariantOption outOption)
 		{
 			if (optionTag == null)
 			{
@@ -65,7 +65,7 @@ namespace Fortnite_API.Objects
 			return false;
 		}
 
-		public bool Equals(BrCosmeticVariant other)
+		public bool Equals(BrCosmeticV1Variant other)
 		{
 			if (ReferenceEquals(null, other))
 			{
@@ -92,25 +92,31 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj.GetType() != typeof(BrCosmeticVariant))
+			if (obj.GetType() != typeof(BrCosmeticV1Variant))
 			{
 				return false;
 			}
 
-			return Equals((BrCosmeticVariant)obj);
+			return Equals((BrCosmeticV1Variant)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Channel, Type, Options);
+			unchecked
+			{
+				var hashCode = Channel != null ? Channel.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Type != null ? Type.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Options != null ? Options.GetHashCode() : 0);
+				return hashCode;
+			}
 		}
 
-		public static bool operator ==(BrCosmeticVariant left, BrCosmeticVariant right)
+		public static bool operator ==(BrCosmeticV1Variant left, BrCosmeticV1Variant right)
 		{
 			return Equals(left, right);
 		}
 
-		public static bool operator !=(BrCosmeticVariant left, BrCosmeticVariant right)
+		public static bool operator !=(BrCosmeticV1Variant left, BrCosmeticV1Variant right)
 		{
 			return !Equals(left, right);
 		}

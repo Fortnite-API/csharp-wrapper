@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-using Fortnite_API.Endpoints;
+using Fortnite_API.Endpoints.V1;
 
 using RestSharp;
 
@@ -9,40 +9,22 @@ namespace Fortnite_API
 {
 	public class FortniteApi
 	{
-		//private readonly IRestClient _client;
-		public CosmeticsEndpoints Cosmetics { get; }
-		public ShopEndpoints Shop { get; }
-		public NewsEndpoints News { get; }
-		public CreatorcodeEndpoints CreatorCode { get; }
-		public AesEndpoint Aes { get; }
+		public V1Endpoints V1 { get; }
 
-		public FortniteApi(string apiKey)
+		public FortniteApi(string apiKey = null)
 		{
-			if (apiKey == null)
-			{
-				throw new ArgumentNullException(nameof(apiKey));
-			}
-
-			if (apiKey.Length == 0)
-			{
-				throw new ArgumentOutOfRangeException(nameof(apiKey));
-			}
-
-			var _client = new RestClient("https://fortnite-api.com/")
+			var client = new RestClient(new Uri("https://fortnite-api.com"))
 			{
 				UserAgent = $"Fortnite-API.NET/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
-				Timeout = 10 * 1000,
-				DefaultParameters =
-				{
-					new Parameter("x-api-key", apiKey, ParameterType.HttpHeader)
-				}
+				Timeout = 10 * 1000
 			}.UseSerializer<JsonNetSerializer>();
 
-			Cosmetics = new CosmeticsEndpoints(_client);
-			Shop = new ShopEndpoints(_client);
-			News = new NewsEndpoints(_client);
-			CreatorCode = new CreatorcodeEndpoints(_client);
-			Aes = new AesEndpoint(_client);
+			if (!string.IsNullOrWhiteSpace(apiKey))
+			{
+				client.DefaultParameters.Add(new Parameter("x-api-key", apiKey, ParameterType.HttpHeader));
+			}
+
+			V1 = new V1Endpoints(client);
 		}
 	}
 }

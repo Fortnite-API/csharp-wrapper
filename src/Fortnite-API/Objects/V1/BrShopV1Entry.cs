@@ -2,9 +2,9 @@
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class BrShopEntry
+	public class BrShopV1Entry
 	{
 		[J("regularPrice")] public int RegularPrice { get; private set; }
 		[J("finalPrice")] public int FinalPrice { get; private set; }
@@ -15,6 +15,6 @@ namespace Fortnite_API.Objects
 		[J("panel")] public int Panel { get; private set; }
 		[J("sortPriority")] public int SortPriority { get; private set; }
 		[J("banner")] public string Banner { get; private set; }
-		[J("items")] public List<BrCosmetic> Items { get; private set; }
+		[J("items")] public List<BrCosmeticV1> Items { get; private set; }
 	}
 }

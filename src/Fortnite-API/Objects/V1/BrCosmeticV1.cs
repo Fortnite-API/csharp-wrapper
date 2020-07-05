@@ -4,14 +4,30 @@ using System.Collections.Generic;
 using I = Newtonsoft.Json.JsonIgnoreAttribute;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class BrCosmetic : IEquatable<BrCosmetic>
+	public class BrCosmeticV1 : IEquatable<BrCosmeticV1>
 	{
 		[J("id")] public string Id { get; private set; }
-		[J("type")] public BrCosmeticType Type { get; private set; }
+
+		private string _typeString;
+		[J("type")] public string TypeString
+		{
+			get => _typeString;
+			private set => Type = Utilities.GetBrCosmeticV1Type(_typeString = value);
+		}
+		public BrCosmeticV1Type Type { get; private set; } = BrCosmeticV1Type.Unknown;
+
 		[J("backendType")] public string BackendType { get; private set; }
-		[J("rarity")] public BrCosmeticRarity Rarity { get; private set; }
+
+		private string _rarityString;
+		[J("rarity")] public string RarityString
+		{
+			get => _rarityString;
+			private set => Rarity = Utilities.GetBrCosmeticV1Rarity(_rarityString = value);
+		}
+		public BrCosmeticV1Rarity Rarity { get; private set; } = BrCosmeticV1Rarity.Unknown;
+
 		[J("displayRarity")] public string DisplayRarity { get; private set; }
 		[J("backendRarity")] public string BackendRarity { get; private set; }
 		[J("name")] public string Name { get; private set; }
@@ -21,8 +37,8 @@ namespace Fortnite_API.Objects
 		[J("setText")] public string SetText { get; private set; }
 		[J("series")] public string Series { get; private set; }
 		[J("backendSeries")] public string BackendSeries { get; private set; }
-		[J("images")] public BrCosmeticImages Images { get; private set; }
-		[J("variants")] public List<BrCosmeticVariant> Variants { get; private set; }
+		[J("images")] public BrCosmeticV1Images Images { get; private set; }
+		[J("variants")] public List<BrCosmeticV1Variant> Variants { get; private set; }
 		[J("gameplayTags")] public List<string> GameplayTags { get; private set; }
 		[J("displayAssetPath")] public string DisplayAssetPath { get; private set; }
 		[J("definition")] public string Definition { get; private set; }
@@ -32,15 +48,15 @@ namespace Fortnite_API.Objects
 		[J("lastUpdate")] public DateTime LastUpdate { get; private set; }
 		[J("added")] public DateTime Added { get; private set; }
 
-		[I]public bool HasSet => Set != null;
-		[I]public bool HasSetText => SetText != null;
-		[I]public bool HasSeries => Series != null;
-		[I]public bool HasDisplayAssetPath => DisplayAssetPath != null;
-		[I]public bool HasDefinition => Definition != null;
-		[I]public bool HasRequiredItemId => RequiredItemId != null;
-		[I]public bool HasBuiltInEmoteId => BuiltInEmoteId != null;
-		[I]public bool HasVariants => Variants != null && Variants.Count != 0;
-		[I]public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
+		[I] public bool HasSet => Set != null;
+		[I] public bool HasSetText => SetText != null;
+		[I] public bool HasSeries => Series != null;
+		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;
+		[I] public bool HasDefinition => Definition != null;
+		[I] public bool HasRequiredItemId => RequiredItemId != null;
+		[I] public bool HasBuiltInEmoteId => BuiltInEmoteId != null;
+		[I] public bool HasVariants => Variants != null && Variants.Count != 0;
+		[I] public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
 
 		public bool HasGameplayTag(string gameplayTag)
 		{
@@ -57,7 +73,7 @@ namespace Fortnite_API.Objects
 			return HasGameplayTags && GameplayTags.Contains(gameplayTag);
 		}
 
-		public bool TryGetVariant(string variantType, out BrCosmeticVariant outVariant)
+		public bool TryGetVariant(string variantType, out BrCosmeticV1Variant outVariant)
 		{
 			if (variantType == null)
 			{
@@ -87,7 +103,7 @@ namespace Fortnite_API.Objects
 			return false;
 		}
 
-		public bool TryGetVariantByChannel(string variantChannel, out BrCosmeticVariant outVariant)
+		public bool TryGetVariantByChannel(string variantChannel, out BrCosmeticV1Variant outVariant)
 		{
 			if (variantChannel == null)
 			{
@@ -117,7 +133,7 @@ namespace Fortnite_API.Objects
 			return false;
 		}
 
-		public bool Equals(BrCosmetic other)
+		public bool Equals(BrCosmeticV1 other)
 		{
 			if (ReferenceEquals(null, other))
 			{
@@ -144,25 +160,32 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj.GetType() != typeof(BrCosmetic))
+			if (obj.GetType() != typeof(BrCosmeticV1))
 			{
 				return false;
 			}
 
-			return Equals((BrCosmetic)obj);
+			return Equals((BrCosmeticV1)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Id, Path, LastUpdate, Added);
+			unchecked
+			{
+				var hashCode = Id != null ? Id.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Path != null ? Path.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ LastUpdate.GetHashCode();
+				hashCode = hashCode * 397 ^ Added.GetHashCode();
+				return hashCode;
+			}
 		}
 
-		public static bool operator ==(BrCosmetic left, BrCosmetic right)
+		public static bool operator ==(BrCosmeticV1 left, BrCosmeticV1 right)
 		{
 			return Equals(left, right);
 		}
 
-		public static bool operator !=(BrCosmetic left, BrCosmetic right)
+		public static bool operator !=(BrCosmeticV1 left, BrCosmeticV1 right)
 		{
 			return !Equals(left, right);
 		}

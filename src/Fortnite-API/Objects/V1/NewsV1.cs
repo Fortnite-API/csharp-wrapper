@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class News : IEquatable<News>
+	public class NewsV1 : IEquatable<NewsV1>
 	{
 		[J("language")] public string Language;
 		[J("title")] public string Title;
 		[J("lastModified")] public DateTime LastModified;
-		[J("motds")] public List<NewsMotd> Motds;
-		[J("messages")] public List<NewsMessage> Messages;
+		[J("motds")] public List<NewsV1Motd> Motds;
+		[J("messages")] public List<NewsV1Message> Messages;
 
-		public bool Equals(News other)
+		public bool Equals(NewsV1 other)
 		{
 			if (ReferenceEquals(null, other))
 			{
@@ -40,25 +40,31 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj.GetType() != typeof(News))
+			if (obj.GetType() != typeof(NewsV1))
 			{
 				return false;
 			}
 
-			return Equals((News)obj);
+			return Equals((NewsV1)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Language, Title, LastModified);
+			unchecked
+			{
+				var hashCode = Language != null ? Language.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Title != null ? Title.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ LastModified.GetHashCode();
+				return hashCode;
+			}
 		}
 
-		public static bool operator ==(News left, News right)
+		public static bool operator ==(NewsV1 left, NewsV1 right)
 		{
 			return Equals(left, right);
 		}
 
-		public static bool operator !=(News left, News right)
+		public static bool operator !=(NewsV1 left, NewsV1 right)
 		{
 			return !Equals(left, right);
 		}

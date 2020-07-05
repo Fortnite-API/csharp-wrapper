@@ -4,21 +4,17 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Fortnite_API.Objects;
+using Fortnite_API.Objects.V1;
 
 using RestSharp;
 
-namespace Fortnite_API.Endpoints
+namespace Fortnite_API.Endpoints.V1
 {
-	public class CreatorcodeEndpoints
+	public class CreatorcodeV1Endpoints : EndpointBase
 	{
-		private readonly IRestClient _client;
+		internal CreatorcodeV1Endpoints(IRestClient client) : base(client) { }
 
-		internal CreatorcodeEndpoints(IRestClient client)
-		{
-			_client = client;
-		}
-
-		public async Task<ApiResponse<CreatorCode>> GetAsync(string slug, CancellationToken token = default)
+		public async Task<ApiResponse<CreatorCodeV1>> GetAsync(string slug, CancellationToken token = default)
 		{
 			if (slug == null)
 			{
@@ -30,7 +26,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentOutOfRangeException(nameof(slug));
 			}
 
-			var request = new RestRequest("creatorcode", Method.GET)
+			var request = new RestRequest("v1/creatorcode", Method.GET)
 			{
 				Parameters =
 				{
@@ -38,16 +34,16 @@ namespace Fortnite_API.Endpoints
 				}
 			};
 
-			var response = await _client.ExecuteTaskAsync<ApiResponse<CreatorCode>>(request, token).ConfigureAwait(false);
+			var response = await _client.ExecuteAsync<ApiResponse<CreatorCodeV1>>(request, token).ConfigureAwait(false);
 			return response.Data;
 		}
 
-		public ApiResponse<CreatorCode> Get(string slug)
+		public ApiResponse<CreatorCodeV1> Get(string slug)
 		{
 			return GetAsync(slug).GetAwaiter().GetResult();
 		}
 
-		public async Task<ApiResponse<CreatorCode>> SearchAsync(string slug, CancellationToken token = default)
+		public async Task<ApiResponse<CreatorCodeV1>> SearchAsync(string slug, CancellationToken token = default)
 		{
 			if (slug == null)
 			{
@@ -59,7 +55,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentOutOfRangeException(nameof(slug));
 			}
 
-			var request = new RestRequest("creatorcode/search", Method.GET)
+			var request = new RestRequest("v1/creatorcode/search", Method.GET)
 			{
 				Parameters =
 				{
@@ -67,16 +63,16 @@ namespace Fortnite_API.Endpoints
 				}
 			};
 
-			var response = await _client.ExecuteTaskAsync<ApiResponse<CreatorCode>>(request, token).ConfigureAwait(false);
+			var response = await _client.ExecuteAsync<ApiResponse<CreatorCodeV1>>(request, token).ConfigureAwait(false);
 			return response.Data;
 		}
 
-		public ApiResponse<CreatorCode> Search(string slug)
+		public ApiResponse<CreatorCodeV1> Search(string slug)
 		{
 			return SearchAsync(slug).GetAwaiter().GetResult();
 		}
 
-		public async Task<ApiResponse<List<CreatorCode>>> SearchAllAsync(string slug, CancellationToken token = default)
+		public async Task<ApiResponse<List<CreatorCodeV1>>> SearchAllAsync(string slug, CancellationToken token = default)
 		{
 			if (slug == null)
 			{
@@ -88,7 +84,7 @@ namespace Fortnite_API.Endpoints
 				throw new ArgumentOutOfRangeException(nameof(slug));
 			}
 
-			var request = new RestRequest("creatorcode/search/all", Method.GET)
+			var request = new RestRequest("v1/creatorcode/search/all", Method.GET)
 			{
 				Parameters =
 				{
@@ -96,11 +92,11 @@ namespace Fortnite_API.Endpoints
 				}
 			};
 
-			var response = await _client.ExecuteTaskAsync<ApiResponse<List<CreatorCode>>>(request, token).ConfigureAwait(false);
+			var response = await _client.ExecuteAsync<ApiResponse<List<CreatorCodeV1>>>(request, token).ConfigureAwait(false);
 			return response.Data;
 		}
 
-		public ApiResponse<List<CreatorCode>> SearchAll(string slug)
+		public ApiResponse<List<CreatorCodeV1>> SearchAll(string slug)
 		{
 			return SearchAllAsync(slug).GetAwaiter().GetResult();
 		}

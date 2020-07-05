@@ -2,15 +2,15 @@
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class AesData : IEquatable<AesData>
+	public class AesV1 : IEquatable<AesV1>
 	{
 		[J("aes")] public string Aes { get; private set; }
 		[J("build")] public string Build { get; private set; }
 		[J("lastUpdate")] public DateTime LastUpdate { get; private set; }
 
-		public bool Equals(AesData other)
+		public bool Equals(AesV1 other)
 		{
 			if (ReferenceEquals(null, other))
 			{
@@ -37,25 +37,31 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj.GetType() != typeof(AesData))
+			if (obj.GetType() != typeof(AesV1))
 			{
 				return false;
 			}
 
-			return Equals((AesData)obj);
+			return Equals((AesV1)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Aes, Build, LastUpdate);
+			unchecked
+			{
+				var hashCode = Aes != null ? Aes.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Build != null ? Build.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ LastUpdate.GetHashCode();
+				return hashCode;
+			}
 		}
 
-		public static bool operator ==(AesData left, AesData right)
+		public static bool operator ==(AesV1 left, AesV1 right)
 		{
 			return Equals(left, right);
 		}
 
-		public static bool operator !=(AesData left, AesData right)
+		public static bool operator !=(AesV1 left, AesV1 right)
 		{
 			return !Equals(left, right);
 		}

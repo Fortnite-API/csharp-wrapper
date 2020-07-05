@@ -2,9 +2,9 @@
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class CreatorCode : IEquatable<CreatorCode>
+	public class CreatorCodeV1 : IEquatable<CreatorCodeV1>
 	{
 		[J("id")] public string Id { get; private set; }
 		[J("slug")] public string Slug { get; private set; }
@@ -12,7 +12,7 @@ namespace Fortnite_API.Objects
 		[J("status")] public string Status { get; private set; }
 		[J("verified")] public bool Verified { get; private set; }
 
-		public bool Equals(CreatorCode other)
+		public bool Equals(CreatorCodeV1 other)
 		{
 			if (ReferenceEquals(null, other))
 			{
@@ -39,25 +39,33 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj.GetType() != typeof(CreatorCode))
+			if (obj.GetType() != typeof(CreatorCodeV1))
 			{
 				return false;
 			}
 
-			return Equals((CreatorCode)obj);
+			return Equals((CreatorCodeV1)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Id, Slug, DisplayName, Status, Verified);
+			unchecked
+			{
+				var hashCode = Id != null ? Id.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Slug != null ? Slug.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (DisplayName != null ? DisplayName.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Status != null ? Status.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ Verified.GetHashCode();
+				return hashCode;
+			}
 		}
 
-		public static bool operator ==(CreatorCode left, CreatorCode right)
+		public static bool operator ==(CreatorCodeV1 left, CreatorCodeV1 right)
 		{
 			return Equals(left, right);
 		}
 
-		public static bool operator !=(CreatorCode left, CreatorCode right)
+		public static bool operator !=(CreatorCodeV1 left, CreatorCodeV1 right)
 		{
 			return !Equals(left, right);
 		}

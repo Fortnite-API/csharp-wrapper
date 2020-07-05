@@ -2,9 +2,9 @@
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace Fortnite_API.Objects
+namespace Fortnite_API.Objects.V1
 {
-	public class NewsMotd : IEquatable<NewsMotd>
+	public class NewsV1Motd : IEquatable<NewsV1Motd>
 	{
 		[J("id")] public string Id { get; private set; }
 		[J("title")] public string Title { get; private set; }
@@ -16,7 +16,7 @@ namespace Fortnite_API.Objects
 		[J("type")] public string Type { get; private set; }
 		[J("entryType")] public string EntryType { get; private set; }
 
-		public bool Equals(NewsMotd other)
+		public bool Equals(NewsV1Motd other)
 		{
 			if (ReferenceEquals(null, other))
 			{
@@ -43,35 +43,37 @@ namespace Fortnite_API.Objects
 				return true;
 			}
 
-			if (obj.GetType() != typeof(NewsMotd))
+			if (obj.GetType() != typeof(NewsV1Motd))
 			{
 				return false;
 			}
 
-			return Equals((NewsMotd)obj);
+			return Equals((NewsV1Motd)obj);
 		}
 
 		public override int GetHashCode()
 		{
-			var hashCode = new HashCode();
-			hashCode.Add(Id);
-			hashCode.Add(Title);
-			hashCode.Add(Body);
-			hashCode.Add(Image);
-			hashCode.Add(TileImage);
-			hashCode.Add(Hidden);
-			hashCode.Add(Spotlight);
-			hashCode.Add(Type);
-			hashCode.Add(EntryType);
-			return hashCode.ToHashCode();
+			unchecked
+			{
+				var hashCode = Id != null ? Id.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Title != null ? Title.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Body != null ? Body.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Image != null ? Image.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (TileImage != null ? TileImage.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ Hidden.GetHashCode();
+				hashCode = hashCode * 397 ^ Spotlight.GetHashCode();
+				hashCode = hashCode * 397 ^ (Type != null ? Type.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (EntryType != null ? EntryType.GetHashCode() : 0);
+				return hashCode;
+			}
 		}
 
-		public static bool operator ==(NewsMotd left, NewsMotd right)
+		public static bool operator ==(NewsV1Motd left, NewsV1Motd right)
 		{
 			return Equals(left, right);
 		}
 
-		public static bool operator !=(NewsMotd left, NewsMotd right)
+		public static bool operator !=(NewsV1Motd left, NewsV1Motd right)
 		{
 			return !Equals(left, right);
 		}

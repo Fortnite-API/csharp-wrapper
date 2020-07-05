@@ -1,13 +1,13 @@
-﻿namespace Fortnite_API.Objects
+﻿namespace Fortnite_API.Objects.V1
 {
-	public class BrCosmeticSearchProperties
+	public class BrCosmeticV1SearchProperties
 	{
 		public Optional<GameLanguage> Language { get; set; }
 		public Optional<GameLanguage> SearchLanguage { get; set; }
 		public Optional<MatchMethod> MatchMethod { get; set; }
-		public Optional<BrCosmeticType> Type { get; set; }
+		public Optional<BrCosmeticV1Type> Type { get; set; }
 		public Optional<string> BackendType { get; set; }
-		public Optional<BrCosmeticRarity> Rarity { get; set; }
+		public Optional<BrCosmeticV1Rarity> Rarity { get; set; }
 		public Optional<string> DisplayRarity { get; set; }
 		public Optional<string> BackendRarity { get; set; }
 		public Optional<string> Name { get; set; }

@@ -3,7 +3,7 @@
 namespace Fortnite_API
 {
 	[DebuggerDisplay(@"{" + nameof(DebuggerDisplay) + @",nq}")]
-	public struct Optional<T>
+	public readonly struct Optional<T>
 	{
 		private readonly T _value;
 
