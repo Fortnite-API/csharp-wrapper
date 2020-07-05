@@ -8,7 +8,7 @@ namespace Fortnite_API.Objects.V1
 {
 	public class BrCosmeticV1 : IEquatable<BrCosmeticV1>
 	{
-		[J("id")] public string Id { get; private set; }
+		[J] public string Id { get; private set; }
 
 		private string _typeString;
 		[J("type")] public string TypeString
@@ -16,9 +16,9 @@ namespace Fortnite_API.Objects.V1
 			get => _typeString;
 			private set => Type = Utilities.GetBrCosmeticV1Type(_typeString = value);
 		}
-		public BrCosmeticV1Type Type { get; private set; } = BrCosmeticV1Type.Unknown;
+		[I] public BrCosmeticV1Type Type { get; private set; } = BrCosmeticV1Type.Unknown;
 
-		[J("backendType")] public string BackendType { get; private set; }
+		[J] public string BackendType { get; private set; }
 
 		private string _rarityString;
 		[J("rarity")] public string RarityString
@@ -26,37 +26,42 @@ namespace Fortnite_API.Objects.V1
 			get => _rarityString;
 			private set => Rarity = Utilities.GetBrCosmeticV1Rarity(_rarityString = value);
 		}
-		public BrCosmeticV1Rarity Rarity { get; private set; } = BrCosmeticV1Rarity.Unknown;
+		[I] public BrCosmeticV1Rarity Rarity { get; private set; } = BrCosmeticV1Rarity.Unknown;
 
-		[J("displayRarity")] public string DisplayRarity { get; private set; }
-		[J("backendRarity")] public string BackendRarity { get; private set; }
-		[J("name")] public string Name { get; private set; }
-		[J("shortDescription")] public string ShortDescription { get; private set; }
-		[J("description")] public string Description { get; private set; }
-		[J("set")] public string Set { get; private set; }
-		[J("setText")] public string SetText { get; private set; }
-		[J("series")] public string Series { get; private set; }
-		[J("backendSeries")] public string BackendSeries { get; private set; }
-		[J("images")] public BrCosmeticV1Images Images { get; private set; }
-		[J("variants")] public List<BrCosmeticV1Variant> Variants { get; private set; }
-		[J("gameplayTags")] public List<string> GameplayTags { get; private set; }
-		[J("displayAssetPath")] public string DisplayAssetPath { get; private set; }
-		[J("definition")] public string Definition { get; private set; }
-		[J("requiredItemId")] public string RequiredItemId { get; private set; }
-		[J("builtInEmoteId")] public string BuiltInEmoteId { get; private set; }
-		[J("path")] public string Path { get; private set; }
-		[J("lastUpdate")] public DateTime LastUpdate { get; private set; }
-		[J("added")] public DateTime Added { get; private set; }
+		[J] public string DisplayRarity { get; private set; }
+		[J] public string BackendRarity { get; private set; }
+		[J] public string Name { get; private set; }
+		[J] public string ShortDescription { get; private set; }
+		[J] public string Description { get; private set; }
+		[J] public string Set { get; private set; }
+		[J] public string SetText { get; private set; }
+		[J] public string Series { get; private set; }
+		[J] public string BackendSeries { get; private set; }
+		[J] public BrCosmeticV1Images Images { get; private set; }
+		[J] public List<BrCosmeticV1Variant> Variants { get; private set; }
+		[J] public List<string> GameplayTags { get; private set; }
+		[J] public string DisplayAssetPath { get; private set; }
+		[J] public string Definition { get; private set; }
+		[Obsolete("This property will always return null.")]
+		public string RequiredItemId { get; } = null;
+		[Obsolete("This property will always return null.")]
+		public string BuiltInEmoteId { get; } = null;
+		[J] public string Path { get; private set; }
+		[Obsolete("This property will always return the same date as the 'Added' property.")]
+		[J] public DateTime LastUpdate { get; private set; }
+		[J] public DateTime Added { get; private set; }
 
-		[I] public bool HasSet => Set != null;
-		[I] public bool HasSetText => SetText != null;
-		[I] public bool HasSeries => Series != null;
-		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;
-		[I] public bool HasDefinition => Definition != null;
-		[I] public bool HasRequiredItemId => RequiredItemId != null;
-		[I] public bool HasBuiltInEmoteId => BuiltInEmoteId != null;
-		[I] public bool HasVariants => Variants != null && Variants.Count != 0;
-		[I] public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
+		public bool HasSet => Set != null;
+		public bool HasSetText => SetText != null;
+		public bool HasSeries => Series != null;
+		public bool HasDisplayAssetPath => DisplayAssetPath != null;
+		public bool HasDefinition => Definition != null;
+		[Obsolete("This property will always return false.")]
+		public bool HasRequiredItemId { get; } = false;
+		[Obsolete("This property will always return false.")]
+		public bool HasBuiltInEmoteId { get; } = false;
+		public bool HasVariants => Variants != null && Variants.Count != 0;
+		public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
 
 		public bool HasGameplayTag(string gameplayTag)
 		{
@@ -145,7 +150,7 @@ namespace Fortnite_API.Objects.V1
 				return true;
 			}
 
-			return Id == other.Id && Path == other.Path && LastUpdate.Equals(other.LastUpdate) && Added.Equals(other.Added);
+			return Id == other.Id && Path == other.Path && Added.Equals(other.Added);
 		}
 
 		public override bool Equals(object obj)
@@ -174,7 +179,6 @@ namespace Fortnite_API.Objects.V1
 			{
 				var hashCode = Id != null ? Id.GetHashCode() : 0;
 				hashCode = hashCode * 397 ^ (Path != null ? Path.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ LastUpdate.GetHashCode();
 				hashCode = hashCode * 397 ^ Added.GetHashCode();
 				return hashCode;
 			}

@@ -6,9 +6,9 @@ namespace Fortnite_API.Objects.V1
 {
 	public class BrCosmeticV1VariantOption : IEquatable<BrCosmeticV1VariantOption>
 	{
-		[J("tag")] public string Tag { get; private set; }
-		[J("name")] public string Name { get; private set; }
-		[J("image")] public ImageV1Data Image { get; private set; }
+		[J] public string Tag { get; private set; }
+		[J] public string Name { get; private set; }
+		[J] public ImageV1Data Image { get; private set; }
 
 		public bool Equals(BrCosmeticV1VariantOption other)
 		{

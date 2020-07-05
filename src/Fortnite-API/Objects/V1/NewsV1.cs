@@ -7,11 +7,11 @@ namespace Fortnite_API.Objects.V1
 {
 	public class NewsV1 : IEquatable<NewsV1>
 	{
-		[J("language")] public string Language;
-		[J("title")] public string Title;
-		[J("lastModified")] public DateTime LastModified;
-		[J("motds")] public List<NewsV1Motd> Motds;
-		[J("messages")] public List<NewsV1Message> Messages;
+		[J] public string Language;
+		[J] public string Title;
+		[J] public DateTime LastModified;
+		[J] public List<NewsV1Motd> Motds;
+		[J] public List<NewsV1Message> Messages;
 
 		public bool Equals(NewsV1 other)
 		{

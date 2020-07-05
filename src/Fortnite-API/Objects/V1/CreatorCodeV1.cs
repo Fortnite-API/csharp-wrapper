@@ -6,11 +6,11 @@ namespace Fortnite_API.Objects.V1
 {
 	public class CreatorCodeV1 : IEquatable<CreatorCodeV1>
 	{
-		[J("id")] public string Id { get; private set; }
-		[J("slug")] public string Slug { get; private set; }
-		[J("displayName")] public string DisplayName { get; private set; }
-		[J("status")] public string Status { get; private set; }
-		[J("verified")] public bool Verified { get; private set; }
+		[J] public string Id { get; private set; }
+		[J] public string Slug { get; private set; }
+		[J] public string DisplayName { get; private set; }
+		[J] public string Status { get; private set; }
+		[J] public bool Verified { get; private set; }
 
 		public bool Equals(CreatorCodeV1 other)
 		{

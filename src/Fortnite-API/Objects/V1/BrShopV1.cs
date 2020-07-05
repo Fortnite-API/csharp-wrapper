@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using I = Newtonsoft.Json.JsonIgnoreAttribute;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace Fortnite_API.Objects.V1
 {
 	public class BrShopV1 : IEquatable<BrShopV1>
 	{
-		[J("hash")] public string Hash { get; private set; }
-		[J("date")] public DateTime Date { get; private set; }
-		[J("featured")] public List<BrShopV1Entry> Featured { get; private set; }
-		[J("daily")] public List<BrShopV1Entry> Daily { get; private set; }
-		[J("votes")] public List<BrShopV1Entry> Votes { get; private set; }
-		[J("voteWinners")] public List<BrShopV1Entry> VoteWinners { get; private set; }
+		[J] public string Hash { get; private set; }
+		[J] public DateTime Date { get; private set; }
+		[J] public List<BrShopV1Entry> Featured { get; private set; }
+		[J] public List<BrShopV1Entry> Daily { get; private set; }
+		[J] public List<BrShopV1Entry> Votes { get; private set; }
+		[J] public List<BrShopV1Entry> VoteWinners { get; private set; }
 
-		[I] public bool HasFeaturedEntries => Featured != null && Featured.Count > 0;
-		[I] public bool HasDailyEntries => Daily != null && Daily.Count > 0;
-		[I] public bool HasVoteEntries => Votes != null && Votes.Count > 0;
-		[I] public bool HasVoteWinnerEntries => VoteWinners != null && VoteWinners.Count > 0;
+		public bool HasFeaturedEntries => Featured != null && Featured.Count > 0;
+		public bool HasDailyEntries => Daily != null && Daily.Count > 0;
+		public bool HasVoteEntries => Votes != null && Votes.Count > 0;
+		public bool HasVoteWinnerEntries => VoteWinners != null && VoteWinners.Count > 0;
 
 		public bool Equals(BrShopV1 other)
 		{

@@ -6,9 +6,9 @@ namespace Fortnite_API.Objects.V1
 {
 	public class AesV1 : IEquatable<AesV1>
 	{
-		[J("aes")] public string Aes { get; private set; }
-		[J("build")] public string Build { get; private set; }
-		[J("lastUpdate")] public DateTime LastUpdate { get; private set; }
+		[J] public string Aes { get; private set; }
+		[J] public string Build { get; private set; }
+		[J] public DateTime LastUpdate { get; private set; }
 
 		public bool Equals(AesV1 other)
 		{

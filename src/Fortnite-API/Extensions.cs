@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 
 using Fortnite_API.Objects;
 using Fortnite_API.Objects.V1;
+using Fortnite_API.Objects.V2;
 
 using RestSharp;
 
@@ -49,6 +50,66 @@ namespace Fortnite_API
 			}
 		}
 
+		public static string GetString(this AesV2KeyFormat keyFormat)
+		{
+			switch (keyFormat)
+			{
+				case AesV2KeyFormat.Hex:
+					return "hex";
+				case AesV2KeyFormat.Base64:
+					return "base64";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(keyFormat), keyFormat, null);
+			}
+		}
+
+		public static string GetString(this BrStatsV2V1TimeWindow timeWindow)
+		{
+			switch (timeWindow)
+			{
+				case BrStatsV2V1TimeWindow.Lifetime:
+					return "lifetime";
+				case BrStatsV2V1TimeWindow.Season:
+					return "season";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(timeWindow), timeWindow, null);
+			}
+		}
+
+		public static string GetString(this BrStatsV2V1AccountType accountType)
+		{
+			switch (accountType)
+			{
+				case BrStatsV2V1AccountType.Epic:
+					return "epic";
+				case BrStatsV2V1AccountType.PSN:
+					return "psn";
+				case BrStatsV2V1AccountType.XBL:
+					return "xbl";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(accountType), accountType, null);
+			}
+		}
+
+		public static string GetString(this BrStatsV2V1ImagePlatform imagePlatform)
+		{
+			switch (imagePlatform)
+			{
+				case BrStatsV2V1ImagePlatform.None:
+					return "none";
+				case BrStatsV2V1ImagePlatform.All:
+					return "all";
+				case BrStatsV2V1ImagePlatform.KeyboardMouse:
+					return "keyboardMouse";
+				case BrStatsV2V1ImagePlatform.Gamepad:
+					return "gamepad";
+				case BrStatsV2V1ImagePlatform.Touch:
+					return "touch";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(imagePlatform), imagePlatform, null);
+			}
+		}
+
 		public static string GetString(this MatchMethod matchMethod)
 		{
 			switch (matchMethod)
@@ -92,6 +153,8 @@ namespace Fortnite_API
 					return "music";
 				case BrCosmeticV1Type.Pet:
 					return "pet";
+				case BrCosmeticV1Type.PetCarrier:
+					return "petcarrier";
 				case BrCosmeticV1Type.Pickaxe:
 					return "pickaxe";
 				case BrCosmeticV1Type.Spray:
@@ -148,7 +211,15 @@ namespace Fortnite_API
 			return boolean ? "true" : "false";
 		}
 
-		public static RestRequest ApplySearchParameters(this RestRequest request, Action<BrCosmeticV1SearchProperties> func)
+		public static IRestRequest ApplySearchParameters(this IRestRequest request, Action<BrCosmeticV2SearchProperties> func)
+		{
+			var searchProperties = new BrCosmeticV2SearchProperties();
+			func(searchProperties);
+
+			return searchProperties.AppendParameters(request);
+		}
+
+		public static IRestRequest ApplySearchParameters(this IRestRequest request, Action<BrCosmeticV1SearchProperties> func)
 		{
 			var searchProperties = new BrCosmeticV1SearchProperties();
 			func(searchProperties);

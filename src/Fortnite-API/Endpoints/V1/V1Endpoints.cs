@@ -9,6 +9,7 @@ namespace Fortnite_API.Endpoints.V1
 		public NewsV1Endpoints News { get; }
 		public CreatorcodeV1Endpoints CreatorCode { get; }
 		public AesV1Endpoints Aes { get; }
+		public StatsV1Endpoints Stats { get; }
 
 		internal V1Endpoints(IRestClient client)
 		{
@@ -17,6 +18,7 @@ namespace Fortnite_API.Endpoints.V1
 			News = new NewsV1Endpoints(client);
 			CreatorCode = new CreatorcodeV1Endpoints(client);
 			Aes = new AesV1Endpoints(client);
+			Stats = new StatsV1Endpoints(client);
 		}
 	}
 }

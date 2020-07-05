@@ -6,15 +6,15 @@ namespace Fortnite_API.Objects.V1
 {
 	public class NewsV1Motd : IEquatable<NewsV1Motd>
 	{
-		[J("id")] public string Id { get; private set; }
-		[J("title")] public string Title { get; private set; }
-		[J("body")] public string Body { get; private set; }
-		[J("image")] public Uri Image { get; private set; }
-		[J("tileImage")] public Uri TileImage { get; private set; }
-		[J("hidden")] public bool Hidden { get; private set; }
-		[J("spotlight")] public bool Spotlight { get; private set; }
-		[J("type")] public string Type { get; private set; }
-		[J("entryType")] public string EntryType { get; private set; }
+		[J] public string Id { get; private set; }
+		[J] public string Title { get; private set; }
+		[J] public string Body { get; private set; }
+		[J] public Uri Image { get; private set; }
+		[J] public Uri TileImage { get; private set; }
+		[J] public bool Hidden { get; private set; }
+		[J] public bool Spotlight { get; private set; }
+		[J] public string Type { get; private set; }
+		[J] public string EntryType { get; private set; }
 
 		public bool Equals(NewsV1Motd other)
 		{

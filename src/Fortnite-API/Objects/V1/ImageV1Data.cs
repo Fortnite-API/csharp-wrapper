@@ -1,13 +1,15 @@
 ﻿using System;
 
+using I = Newtonsoft.Json.JsonIgnoreAttribute;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace Fortnite_API.Objects.V1
 {
 	public class ImageV1Data : IEquatable<ImageV1Data>
 	{
-		[J("hash")] public string Hash { get; private set; }
-		[J("url")] public Uri Url { get; private set; }
+		[Obsolete("This property will always return null.")]
+		[I] public string Hash { get; } = null;
+		[J] public Uri Url { get; private set; }
 
 		public bool Equals(ImageV1Data other)
 		{
@@ -21,7 +23,7 @@ namespace Fortnite_API.Objects.V1
 				return true;
 			}
 
-			return Hash == other.Hash && Equals(Url, other.Url);
+			return Url.Equals(other.Url);
 		}
 
 		public override bool Equals(object obj)
@@ -36,7 +38,7 @@ namespace Fortnite_API.Objects.V1
 				return true;
 			}
 
-			if (obj.GetType() != typeof(ImageV1Data))
+			if (obj.GetType() != GetType())
 			{
 				return false;
 			}
@@ -46,10 +48,7 @@ namespace Fortnite_API.Objects.V1
 
 		public override int GetHashCode()
 		{
-			unchecked
-			{
-				return (Hash != null ? Hash.GetHashCode() : 0) * 397 ^ (Url != null ? Url.GetHashCode() : 0);
-			}
+			return Url.GetHashCode();
 		}
 
 		public static bool operator ==(ImageV1Data left, ImageV1Data right)

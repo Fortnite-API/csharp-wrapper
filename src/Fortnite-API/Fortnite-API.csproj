@@ -14,14 +14,15 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <Authors>Fortnite-API, NotOfficer</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Company>Fortnite-API</Company>
     <PackageIconUrl></PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright (c) 2019-2020 Fortnite-API.com</Copyright>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
     <PackageIcon>logo.png</PackageIcon>
+    <PackageReleaseNotes>Implemented all V2 endpoints.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

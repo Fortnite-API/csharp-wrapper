@@ -13,6 +13,7 @@
 		LoadingScreen,
 		Music,
 		Pet,
+		PetCarrier,
 		Pickaxe,
 		Shout,
 		Spray,

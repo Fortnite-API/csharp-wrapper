@@ -30,6 +30,8 @@ namespace Fortnite_API
 					return BrCosmeticV1Type.Music;
 				case "pet":
 					return BrCosmeticV1Type.Pet;
+				case "petcarrier":
+					return BrCosmeticV1Type.PetCarrier;
 				case "pickaxe":
 					return BrCosmeticV1Type.Pickaxe;
 				case "shout":

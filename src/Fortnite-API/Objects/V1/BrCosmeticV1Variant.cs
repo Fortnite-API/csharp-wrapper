@@ -7,9 +7,9 @@ namespace Fortnite_API.Objects.V1
 {
 	public class BrCosmeticV1Variant : IEquatable<BrCosmeticV1Variant>
 	{
-		[J("channel")] public string Channel { get; private set; }
-		[J("type")] public string Type { get; private set; }
-		[J("options")] public List<BrCosmeticV1VariantOption> Options { get; private set; }
+		[J] public string Channel { get; private set; }
+		[J] public string Type { get; private set; }
+		[J] public List<BrCosmeticV1VariantOption> Options { get; private set; }
 
 		public bool TryGetVariantOption(string optionName, out BrCosmeticV1VariantOption outOption)
 		{

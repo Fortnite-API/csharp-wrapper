@@ -6,14 +6,14 @@ namespace Fortnite_API.Objects.V1
 {
 	public class NewsV1Message : IEquatable<NewsV1Message>
 	{
-		[J("image")] public Uri ImageUrl { get; private set; }
-		[J("hidden")] public bool Hidden { get; private set; }
-		[J("messageType")] public string MessageType { get; private set; }
-		[J("type")] public string Type { get; private set; }
-		[J("adspace")] public string Adspace { get; private set; }
-		[J("title")] public string Title { get; private set; }
-		[J("body")] public string Body { get; private set; }
-		[J("spotlight")] public bool Spotlight { get; private set; }
+		[J] public Uri Image { get; private set; }
+		[J] public bool Hidden { get; private set; }
+		[J] public string MessageType { get; private set; }
+		[J] public string Type { get; private set; }
+		[J] public string Adspace { get; private set; }
+		[J] public string Title { get; private set; }
+		[J] public string Body { get; private set; }
+		[J] public bool Spotlight { get; private set; }
 
 		public bool Equals(NewsV1Message other)
 		{
@@ -27,7 +27,7 @@ namespace Fortnite_API.Objects.V1
 				return true;
 			}
 
-			return Equals(ImageUrl, other.ImageUrl) && Hidden == other.Hidden && MessageType == other.MessageType && Type == other.Type && Adspace == other.Adspace && Title == other.Title && Body == other.Body && Spotlight == other.Spotlight;
+			return Equals(Image, other.Image) && Hidden == other.Hidden && MessageType == other.MessageType && Type == other.Type && Adspace == other.Adspace && Title == other.Title && Body == other.Body && Spotlight == other.Spotlight;
 		}
 
 		public override bool Equals(object obj)
@@ -54,7 +54,7 @@ namespace Fortnite_API.Objects.V1
 		{
 			unchecked
 			{
-				var hashCode = ImageUrl != null ? ImageUrl.GetHashCode() : 0;
+				var hashCode = Image != null ? Image.GetHashCode() : 0;
 				hashCode = hashCode * 397 ^ Hidden.GetHashCode();
 				hashCode = hashCode * 397 ^ (MessageType != null ? MessageType.GetHashCode() : 0);
 				hashCode = hashCode * 397 ^ (Type != null ? Type.GetHashCode() : 0);

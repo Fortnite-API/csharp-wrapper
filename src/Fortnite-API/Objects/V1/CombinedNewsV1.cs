@@ -6,9 +6,9 @@ namespace Fortnite_API.Objects.V1
 {
 	public class CombinedNewsV1 : IEquatable<CombinedNewsV1>
 	{
-		[J("br")] public NewsV1 Br { get; private set; }
-		[J("stw")] public NewsV1 Stw { get; private set; }
-		[J("creative")] public NewsV1 Creative { get; private set; }
+		[J] public NewsV1 Br { get; private set; }
+		[J] public NewsV1 Stw { get; private set; }
+		[J] public NewsV1 Creative { get; private set; }
 
 		public bool Equals(CombinedNewsV1 other)
 		{
