@@ -12,6 +12,15 @@ namespace Fortnite_API.Objects.V2
 		[J] public Uri Featured { get; private set; }
 		[J] public Dictionary<string, Uri> Other { get; private set; }
 
+		public bool HasSmallIcon => SmallIcon != null;
+		public bool HasIcon => Icon != null;
+		public bool HasFeatured => Featured != null;
+		public bool HasOther => Other != null && Other.Count != 0;
+		public Uri Get(bool useFeatured = true)
+		{
+			return useFeatured && HasFeatured ? Featured : Icon ?? SmallIcon;
+		}
+
 		public bool Equals(BrCosmeticV2Images other)
 		{
 			if (ReferenceEquals(null, other))
