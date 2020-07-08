@@ -2,7 +2,7 @@
 
 # C# wrapper for [Fortnite-API.com](https://fortnite-api.com)
 
-[![GitHub release](https://img.shields.io/github/v/release/Fortnite-API/csharp-wrapper?logo=github)](https://github.com/Fortnite-API/csharp-wrapper/releases/latest) [![Nuget](https://img.shields.io/nuget/v/Fortnite-API-Wrapper?logo=nuget)](https://www.nuget.org/packages/Fortnite-API-Wrapper) ![Nuget DLs](https://img.shields.io/nuget/dt/Fortnite-API-Wrapper?logo=nuget) [![GitHub issues](https://img.shields.io/github/issues/Fortnite-API/csharp-wrapper?logo=github)](https://github.com/Fortnite-API/csharp-wrapper/issues) [![GitHub License](https://img.shields.io/github/license/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/blob/master/LICENSE) [![Donate](https://img.shields.io/badge/donate-PayPal-blue.svg?logo=paypal)](https://fortnite-api.com/paypal) [![Discord](https://discordapp.com/api/guilds/621452110558527502/widget.png?style=shield)](https://fortnite-api.com/discord)
+[![GitHub release](https://img.shields.io/github/v/release/Fortnite-API/csharp-wrapper?logo=github)](https://github.com/Fortnite-API/csharp-wrapper/releases/latest) [![Nuget](https://img.shields.io/nuget/v/Fortnite-API-Wrapper?logo=nuget)](https://www.nuget.org/packages/Fortnite-API-Wrapper) [![Nuget DLs](https://img.shields.io/nuget/dt/Fortnite-API-Wrapper?logo=nuget)](https://www.nuget.org/packages/Fortnite-API-Wrapper) [![GitHub issues](https://img.shields.io/github/issues/Fortnite-API/csharp-wrapper?logo=github)](https://github.com/Fortnite-API/csharp-wrapper/issues) [![GitHub License](https://img.shields.io/github/license/Fortnite-API/csharp-wrapper)](https://github.com/Fortnite-API/csharp-wrapper/blob/master/LICENSE) [![Donate](https://img.shields.io/badge/donate-PayPal-blue.svg?logo=paypal)](https://fortnite-api.com/paypal) [![Discord](https://discordapp.com/api/guilds/621452110558527502/widget.png?style=shield)](https://fortnite-api.com/discord)
 
 </div>
 
@@ -31,20 +31,23 @@ var api = new FortniteApi();
 ```cs
 var api = new FortniteApi();
 
-// accesses the shop endpoint (https://fortnite-api.com/shop)
-api.Shop...
+// accesses the stats endpoint (https://fortnite-api.com/v1/stats)
+api.V1.Stats...
 
-// accesses the cosmetics endpoint (https://fortnite-api.com/cosmetics)
-api.Cosmetics...
+// accesses the shop endpoint (https://fortnite-api.com/v2/shop)
+api.V2.Shop...
 
-// accesses the news endpoint (https://fortnite-api.com/news)
-api.News...
+// accesses the cosmetics endpoint (https://fortnite-api.com/v2/cosmetics)
+api.V2.Cosmetics...
 
-// accesses the creatorcode endpoint (https://fortnite-api.com/creatorcode)
-api.CreatorCode...
+// accesses the news endpoint (https://fortnite-api.com/v2/news)
+api.V2.News...
 
-// accesses the aes endpoint (https://fortnite-api.com/aes)
-api.Aes...
+// accesses the creatorcode endpoint (https://fortnite-api.com/v2/creatorcode)
+api.V2.CreatorCode...
+
+// accesses the aes endpoint (https://fortnite-api.com/v2/aes)
+api.V2.Aes...
 ```
 
 ### Contribute
@@ -59,4 +62,4 @@ We are open for any contribution.
 - RestSharp (Apache 2.0) [License](https://github.com/restsharp/RestSharp/blob/master/LICENSE.txt)
 - Newtonsoft.Json (MIT) [License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md)
 
-API developed by [Fortnite-API.com](https://fortnite-api.com/about)
+API developed by [Fortnite-API.com](https://dash.fortnite-api.com/about)
