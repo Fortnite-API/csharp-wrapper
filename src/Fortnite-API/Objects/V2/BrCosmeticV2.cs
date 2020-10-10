@@ -36,15 +36,15 @@ namespace Fortnite_API.Objects.V2
 		[J] public DateTime Added { get; private set; }
 		[J] public List<DateTime> ShopHistory { get; private set; }
 
-		public bool HasSeries => Series != null;
-		public bool HasSet => Set != null;
-		public bool HasIntroduction => Introduction != null;
-		public bool HasVariants => Variants != null && Variants.Count != 0;
-		public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
-		public bool HasShowcaseVideo => ShowcaseVideo != null;
-		public bool HasDisplayAssetPath => DisplayAssetPath != null;
-		public bool HasDefinitionPath => DefinitionPath != null;
-		public bool HasShopHistory => ShopHistory != null;
+		[I] public bool HasSeries => Series != null;
+		[I] public bool HasSet => Set != null;
+		[I] public bool HasIntroduction => Introduction != null;
+		[I] public bool HasVariants => Variants != null && Variants.Count != 0;
+		[I] public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
+		[I] public bool HasShowcaseVideo => ShowcaseVideo != null;
+		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;
+		[I] public bool HasDefinitionPath => DefinitionPath != null;
+		[I] public bool HasShopHistory => ShopHistory != null;
 
 		public bool Equals(BrCosmeticV2 other)
 		{

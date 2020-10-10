@@ -15,6 +15,12 @@ namespace Fortnite_api.Test
 			const string apiKey = null; // optional as of now. check https://dash.fortnite-api.com to be sure
 			var api = new FortniteApi(apiKey);
 
+			var playlistsV1 = await api.V1.Playlists.GetAsync();
+			var playlistSoloV1 = await api.V1.Playlists.GetAsync("playlist_defaultsolo");
+
+			Debugger.Break();
+			return;
+
 			//var cosmeticsV2 = await api.V2.Cosmetics.GetBrAsync();
 			var renegadeSearch = await api.V2.Cosmetics.SearchBrAsync(x =>
 			{
@@ -43,9 +49,6 @@ namespace Fortnite_api.Test
 				x.Name = "ninja";
 				x.ImagePlatform = BrStatsV2V1ImagePlatform.All;
 			});
-
-			Debugger.Break();
-			return;
 
 			var aes = await api.V1.Aes.GetAsync();
 			await Task.Delay(500);

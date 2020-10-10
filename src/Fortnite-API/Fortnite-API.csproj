@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net452;net452;net472;net48</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net452;net452;net472;net48;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>Fortnite_API</RootNamespace>
     <Description>C# wrapper for https://fortnite-api.com</Description>
     <PackageId>Fortnite-API-Wrapper</PackageId>
@@ -14,15 +14,15 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <Authors>Fortnite-API, NotOfficer</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>2.0.1</Version>
+    <Version>2.1.0</Version>
     <Company>Fortnite-API</Company>
     <PackageIconUrl></PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright (c) 2019-2020 Fortnite-API.com</Copyright>
-    <AssemblyVersion>2.0.1.0</AssemblyVersion>
-    <FileVersion>2.0.1.0</FileVersion>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
     <PackageIcon>logo.png</PackageIcon>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>added v1 playlists endpoint</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -39,7 +39,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="RestSharp" Version="106.11.4" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
   </ItemGroup>
 
   <ItemGroup>
