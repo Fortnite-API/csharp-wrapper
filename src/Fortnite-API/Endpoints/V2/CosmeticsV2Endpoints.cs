@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Fortnite_API.Objects;
 using Fortnite_API.Objects.V2;
+
+using Newtonsoft.Json;
 
 using RestSharp;
 
@@ -41,7 +44,7 @@ namespace Fortnite_API.Endpoints.V2
 
 			if (cosmeticId.Length == 0)
 			{
-				throw new ArgumentOutOfRangeException(nameof(cosmeticId));
+				throw new ArgumentOutOfRangeException(nameof(cosmeticId), cosmeticId, null);
 			}
 
 			var request = new RestRequest($"v2/cosmetics/br/{cosmeticId}", Method.GET);
@@ -60,26 +63,33 @@ namespace Fortnite_API.Endpoints.V2
 			return GetBrAsync(cosmeticId, language).GetAwaiter().GetResult();
 		}
 
+		public async Task<ApiResponse<BrNewCosmeticsV2>> GetBrNewAsync(GameLanguage? language = null, CancellationToken token = default)
+		{
+			var request = new RestRequest("v2/cosmetics/br/new", Method.GET);
+
+			if (language.HasValue)
+			{
+				request.AddQueryParameter("language", language.Value.GetLanguageCode());
+			}
+
+			var response = await _client.ExecuteAsync<ApiResponse<BrNewCosmeticsV2>>(request, token).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public ApiResponse<BrNewCosmeticsV2> GetBrNew(GameLanguage? language = null)
+		{
+			return GetBrNewAsync(language).GetAwaiter().GetResult();
+		}
+
 		public async Task<ApiResponse<List<BrCosmeticV2>>> SearchBrIdsAsync(IEnumerable<string> cosmeticIds, GameLanguage? language = null, CancellationToken token = default)
 		{
-			if (cosmeticIds == null)
+			if (cosmeticIds == null || !cosmeticIds.Any())
 			{
-				throw new ArgumentNullException(nameof(cosmeticIds));
+				throw new ArgumentNullException(nameof(cosmeticIds), "the array must not be empty");
 			}
 
-			var request = new RestRequest("v2/cosmetics/br/search/ids", Method.GET);
-			var isArrayEmpty = true;
-
-			foreach (var cosmeticId in cosmeticIds)
-			{
-				isArrayEmpty = false;
-				request.AddQueryParameter("id", cosmeticId);
-			}
-
-			if (isArrayEmpty)
-			{
-				throw new ArgumentOutOfRangeException(nameof(cosmeticIds));
-			}
+			var request = new RestRequest("v2/cosmetics/br/search/ids", Method.POST);
+			request.AddParameter("application/json", JsonConvert.SerializeObject(cosmeticIds), ParameterType.RequestBody);
 
 			if (language.HasValue)
 			{

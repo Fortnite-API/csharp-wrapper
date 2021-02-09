@@ -177,7 +177,7 @@ namespace Fortnite_API.Objects.V2
 			{
 				if (Added.Value <= _unixEpoch)
 				{
-					throw new ArgumentOutOfRangeException(nameof(Added));
+					throw new ArgumentOutOfRangeException(nameof(Added), Added.Value, null);
 				}
 
 				request.AddQueryParameter("added", (Added.Value - _unixEpoch).TotalSeconds.ToString("0"));
@@ -187,7 +187,7 @@ namespace Fortnite_API.Objects.V2
 			{
 				if (AddedSince.Value <= _unixEpoch)
 				{
-					throw new ArgumentOutOfRangeException(nameof(AddedSince));
+					throw new ArgumentOutOfRangeException(nameof(AddedSince), AddedSince.Value, null);
 				}
 
 				request.AddQueryParameter("addedSince", (AddedSince.Value - _unixEpoch).TotalSeconds.ToString("0"));
@@ -202,7 +202,7 @@ namespace Fortnite_API.Objects.V2
 			{
 				if (LastAppearance.Value <= _unixEpoch)
 				{
-					throw new ArgumentOutOfRangeException(nameof(LastAppearance));
+					throw new ArgumentOutOfRangeException(nameof(LastAppearance), LastAppearance.Value, null);
 				}
 
 				request.AddQueryParameter("lastAppearance", (LastAppearance.Value - _unixEpoch).TotalSeconds.ToString("0"));

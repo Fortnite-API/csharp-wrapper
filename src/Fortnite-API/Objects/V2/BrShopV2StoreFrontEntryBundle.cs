@@ -9,6 +9,7 @@ namespace Fortnite_API.Objects.V2
 	public class BrShopV2StoreFrontEntryBundle : IEquatable<BrShopV2StoreFrontEntryBundle>
 	{
 		[J] public string Name { get; private set; }
+		[J] public string Info { get; private set; }
 		[J] public Uri Image { get; private set; }
 
 		public bool Equals(BrShopV2StoreFrontEntryBundle other)
@@ -23,7 +24,7 @@ namespace Fortnite_API.Objects.V2
 				return true;
 			}
 
-			return Name == other.Name && Image.Equals(other.Image);
+			return Name == other.Name && Info == other.Info && Equals(Image, other.Image);
 		}
 
 		public override bool Equals(object obj)
@@ -50,7 +51,10 @@ namespace Fortnite_API.Objects.V2
 		{
 			unchecked
 			{
-				return Name.GetHashCode() * 397 ^ Image.GetHashCode();
+				var hashCode = Name != null ? Name.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Info != null ? Info.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (Image != null ? Image.GetHashCode() : 0);
+				return hashCode;
 			}
 		}
 

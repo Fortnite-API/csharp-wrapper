@@ -1,6 +1,7 @@
 ﻿using System;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using I = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace Fortnite_API.Objects.V1
 {
@@ -13,12 +14,12 @@ namespace Fortnite_API.Objects.V1
 		[J] public ImageV1Data CoverArt { get; private set; }
 		[J] public ImageV1Data Decal { get; private set; }
 
-		public bool HasSmallIcon => SmallIcon != null;
-		public bool HasIcon => Icon != null;
-		public bool HasFeatured => Featured != null;
-		public bool HasBackground => Background != null;
-		public bool HasCoverArt => CoverArt != null;
-		public bool HasDecal => Decal != null;
+		[I] public bool HasSmallIcon => SmallIcon != null;
+		[I] public bool HasIcon => Icon != null;
+		[I] public bool HasFeatured => Featured != null;
+		[I] public bool HasBackground => Background != null;
+		[I] public bool HasCoverArt => CoverArt != null;
+		[I] public bool HasDecal => Decal != null;
 
 		public bool Equals(BrCosmeticV1Images other)
 		{

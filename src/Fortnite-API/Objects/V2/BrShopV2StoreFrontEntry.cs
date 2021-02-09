@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using I = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace Fortnite_API.Objects.V2
 {
@@ -17,16 +18,20 @@ namespace Fortnite_API.Objects.V2
 		[J] public bool Refundable { get; private set; }
 		[J] public int SortPriority { get; private set; }
 		[J] public List<string> Categories { get; private set; }
+		[J] public string SectionId { get; private set; }
 		[J] public string DevName { get; private set; }
 		[J] public string OfferId { get; private set; }
 		[J] public string DisplayAssetPath { get; private set; }
+		[J] public string NewDisplayAssetPath { get; private set; }
 		[J] public List<BrCosmeticV2> Items { get; private set; }
 
-		public bool IsBundle => Bundle != null;
-		public bool HasBanner => Banner != null;
-		public bool HasCategories => Categories != null && Categories.Count != 0;
-		public bool IsDiscounted => FinalPrice < RegularPrice;
-		public bool HasDisplayAssetPath => DisplayAssetPath != null;
+		[I] public bool IsBundle => Bundle != null;
+		[I] public bool HasBanner => Banner != null;
+		[I] public bool HasCategories => Categories != null && Categories.Count != 0;
+		[I] public bool HasSectionId => SectionId != null;
+		[I] public bool IsDiscounted => FinalPrice < RegularPrice;
+		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;
+		[I] public bool HasNewDisplayAssetPath => NewDisplayAssetPath != null;
 
 		public bool Equals(BrShopV2StoreFrontEntry other)
 		{
@@ -55,7 +60,7 @@ namespace Fortnite_API.Objects.V2
 				return true;
 			}
 
-			if (obj.GetType() != this.GetType())
+			if (obj.GetType() != GetType())
 			{
 				return false;
 			}

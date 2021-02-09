@@ -59,6 +59,8 @@ namespace Fortnite_API
 					return BrCosmeticV1Rarity.Epic;
 				case "legendary":
 					return BrCosmeticV1Rarity.Legendary;
+				case "mythic":
+					return BrCosmeticV1Rarity.Mythic;
 				case "slurp":
 					return BrCosmeticV1Rarity.Slurp;
 				case "shadow":

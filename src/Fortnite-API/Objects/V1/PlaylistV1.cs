@@ -15,6 +15,7 @@ namespace Fortnite_API.Objects.V1
 		[J] public string SubName { get; private set; }
 		[J] public string Description { get; private set; }
 		[J] public string GameType { get; private set; }
+		[J] public string RatingType { get; private set; }
 		[J] public int MinPlayers { get; private set; }
 		[J] public int MaxPlayers { get; private set; }
 		[J] public int MaxTeams { get; private set; }

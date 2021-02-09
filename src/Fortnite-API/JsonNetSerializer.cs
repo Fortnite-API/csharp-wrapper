@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿#pragma warning disable CS0618
+
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 using RestSharp;
@@ -10,17 +12,20 @@ namespace Fortnite_API
 	{
 		private static readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
 		{
-			ContractResolver = new CamelCasePropertyNamesContractResolver()
+			ContractResolver = new DefaultContractResolver
+			{
+				NamingStrategy = new CamelCaseNamingStrategy(false, false)
+			}
 		};
 
 		public string Serialize(object obj)
 		{
-			return JsonConvert.SerializeObject(obj);
+			return JsonConvert.SerializeObject(obj, _serializerSettings);
 		}
 
 		public string Serialize(Parameter parameter)
 		{
-			return JsonConvert.SerializeObject(parameter.Value);
+			return JsonConvert.SerializeObject(parameter.Value, _serializerSettings);
 		}
 
 		public T Deserialize<T>(IRestResponse response)
@@ -39,3 +44,5 @@ namespace Fortnite_API
 		public DataFormat DataFormat { get; } = DataFormat.Json;
 	}
 }
+
+#pragma warning restore CS0618

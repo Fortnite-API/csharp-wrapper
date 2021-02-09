@@ -26,13 +26,7 @@ namespace Fortnite_API.Endpoints.V2
 				throw new ArgumentOutOfRangeException(nameof(name));
 			}
 
-			var request = new RestRequest("v2/creatorcode", Method.GET)
-			{
-				Parameters =
-				{
-					new Parameter("name", name, ParameterType.QueryString)
-				}
-			};
+			var request = new RestRequest("v2/creatorcode", Method.GET).AddQueryParameter("name", name);
 
 			var response = await _client.ExecuteAsync<ApiResponse<CreatorCodeV2>>(request, token).ConfigureAwait(false);
 			return response.Data;
@@ -55,13 +49,7 @@ namespace Fortnite_API.Endpoints.V2
 				throw new ArgumentOutOfRangeException(nameof(name));
 			}
 
-			var request = new RestRequest("v2/creatorcode/search", Method.GET)
-			{
-				Parameters =
-				{
-					new Parameter("name", name, ParameterType.QueryString)
-				}
-			};
+			var request = new RestRequest("v2/creatorcode/search", Method.GET).AddQueryParameter("name", name);
 
 			var response = await _client.ExecuteAsync<ApiResponse<CreatorCodeV2>>(request, token).ConfigureAwait(false);
 			return response.Data;
@@ -84,13 +72,7 @@ namespace Fortnite_API.Endpoints.V2
 				throw new ArgumentOutOfRangeException(nameof(name));
 			}
 
-			var request = new RestRequest("v2/creatorcode/search/all", Method.GET)
-			{
-				Parameters =
-				{
-					new Parameter("name", name, ParameterType.QueryString)
-				}
-			};
+			var request = new RestRequest("v2/creatorcode/search/all", Method.GET).AddQueryParameter("name", name);
 
 			var response = await _client.ExecuteAsync<ApiResponse<List<CreatorCodeV2>>>(request, token).ConfigureAwait(false);
 			return response.Data;

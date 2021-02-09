@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using I = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace Fortnite_API.Objects.V1
 {
@@ -14,10 +15,10 @@ namespace Fortnite_API.Objects.V1
 		[J] public List<BrShopV1Entry> Votes { get; private set; }
 		[J] public List<BrShopV1Entry> VoteWinners { get; private set; }
 
-		public bool HasFeaturedEntries => Featured != null && Featured.Count > 0;
-		public bool HasDailyEntries => Daily != null && Daily.Count > 0;
-		public bool HasVoteEntries => Votes != null && Votes.Count > 0;
-		public bool HasVoteWinnerEntries => VoteWinners != null && VoteWinners.Count > 0;
+		[I] public bool HasFeaturedEntries => Featured != null && Featured.Count > 0;
+		[I] public bool HasDailyEntries => Daily != null && Daily.Count > 0;
+		[I] public bool HasVoteEntries => Votes != null && Votes.Count > 0;
+		[I] public bool HasVoteWinnerEntries => VoteWinners != null && VoteWinners.Count > 0;
 
 		public bool Equals(BrShopV1 other)
 		{

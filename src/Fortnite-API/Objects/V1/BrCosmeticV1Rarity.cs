@@ -2,6 +2,7 @@
 {
 	public enum BrCosmeticV1Rarity
 	{
+		Mythic,
 		Frozen,
 		Lava,
 		Legendary,

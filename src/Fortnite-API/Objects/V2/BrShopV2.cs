@@ -2,6 +2,7 @@
 using System.Diagnostics;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using I = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace Fortnite_API.Objects.V2
 {
@@ -17,12 +18,12 @@ namespace Fortnite_API.Objects.V2
 		[J] public BrShopV2StoreFront Votes { get; private set; }
 		[J] public BrShopV2StoreFront VoteWinners { get; private set; }
 
-		public bool HasFeatured => Featured != null;
-		public bool HasDaily => Daily != null;
-		public bool HasSpecialFeatured => SpecialFeatured != null;
-		public bool HasSpecialDaily => SpecialDaily != null;
-		public bool HasVotes => Votes != null;
-		public bool HasVoteWinners => VoteWinners != null;
+		[I] public bool HasFeatured => Featured != null;
+		[I] public bool HasDaily => Daily != null;
+		[I] public bool HasSpecialFeatured => SpecialFeatured != null;
+		[I] public bool HasSpecialDaily => SpecialDaily != null;
+		[I] public bool HasVotes => Votes != null;
+		[I] public bool HasVoteWinners => VoteWinners != null;
 
 		public bool Equals(BrShopV2 other)
 		{

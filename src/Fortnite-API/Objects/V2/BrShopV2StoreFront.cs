@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using I = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace Fortnite_API.Objects.V2
 {
@@ -12,7 +13,7 @@ namespace Fortnite_API.Objects.V2
 		[J] public string Name { get; private set; }
 		[J] public List<BrShopV2StoreFrontEntry> Entries { get; private set; }
 
-		public bool HasName => Name != null;
+		[I] public bool HasName => Name != null;
 
 		public bool Equals(BrShopV2StoreFront other)
 		{

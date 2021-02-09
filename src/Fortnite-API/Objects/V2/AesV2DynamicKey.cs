@@ -51,7 +51,7 @@ namespace Fortnite_API.Objects.V2
 		{
 			unchecked
 			{
-				return (PakGuid.GetHashCode() * 397) ^ Key.GetHashCode();
+				return PakGuid.GetHashCode() * 397 ^ Key.GetHashCode();
 			}
 		}
 

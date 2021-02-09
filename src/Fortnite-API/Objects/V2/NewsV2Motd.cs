@@ -15,6 +15,8 @@ namespace Fortnite_API.Objects.V2
 		[J] public Uri Image { get; private set; }
 		[J] public Uri TileImage { get; private set; }
 		[J] public int SortingPriority { get; private set; }
+		[J] public bool Hidden { get; private set; }
+		[J] public string VideoId { get; private set; }
 
 		public bool Equals(NewsV2Motd other)
 		{
@@ -28,7 +30,7 @@ namespace Fortnite_API.Objects.V2
 				return true;
 			}
 
-			return Id == other.Id && Title == other.Title && TabTitle == other.TabTitle && Body == other.Body && Image == other.Image && SortingPriority == other.SortingPriority;
+			return Id == other.Id && Title == other.Title && TabTitle == other.TabTitle && Body == other.Body && Equals(Image, other.Image) && Equals(TileImage, other.TileImage) && SortingPriority == other.SortingPriority && Hidden == other.Hidden && VideoId == other.VideoId;
 		}
 
 		public override bool Equals(object obj)
@@ -55,12 +57,15 @@ namespace Fortnite_API.Objects.V2
 		{
 			unchecked
 			{
-				var hashCode = Id != null ? Id.GetHashCode() : 0;
-				hashCode = hashCode * 397 ^ (Title != null ? Title.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (TabTitle != null ? TabTitle.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Body != null ? Body.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ (Image != null ? Image.GetHashCode() : 0);
-				hashCode = hashCode * 397 ^ SortingPriority;
+				var hashCode = (Id != null ? Id.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (TabTitle != null ? TabTitle.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (Body != null ? Body.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (Image != null ? Image.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ (TileImage != null ? TileImage.GetHashCode() : 0);
+				hashCode = (hashCode * 397) ^ SortingPriority;
+				hashCode = (hashCode * 397) ^ Hidden.GetHashCode();
+				hashCode = (hashCode * 397) ^ (VideoId != null ? VideoId.GetHashCode() : 0);
 				return hashCode;
 			}
 		}

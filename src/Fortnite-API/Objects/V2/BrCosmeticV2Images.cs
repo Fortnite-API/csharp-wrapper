@@ -17,6 +17,7 @@ namespace Fortnite_API.Objects.V2
 		[I] public bool HasIcon => Icon != null;
 		[I] public bool HasFeatured => Featured != null;
 		[I] public bool HasOther => Other != null && Other.Count != 0;
+
 		public Uri Get(bool useFeatured = true)
 		{
 			return useFeatured && HasFeatured ? Featured : Icon ?? SmallIcon;

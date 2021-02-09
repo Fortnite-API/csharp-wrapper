@@ -10,6 +10,7 @@ namespace Fortnite_API.Objects.V2
 	{
 		[J] public string Tag { get; private set; }
 		[J] public string Name { get; private set; }
+		[J] public string UnlockRequirements { get; private set; }
 		[J] public Uri Image { get; private set; }
 
 		public bool Equals(BrCosmeticV2VariantOption other)

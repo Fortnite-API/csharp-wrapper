@@ -11,23 +11,25 @@ namespace Fortnite_API.Objects.V1
 		[J] public string Id { get; private set; }
 
 		private string _typeString;
-		[J("type")] public string TypeString
+
+		[J("type")]
+		public string TypeString
 		{
 			get => _typeString;
 			private set => Type = Utilities.GetBrCosmeticV1Type(_typeString = value);
 		}
 		[I] public BrCosmeticV1Type Type { get; private set; } = BrCosmeticV1Type.Unknown;
-
 		[J] public string BackendType { get; private set; }
 
 		private string _rarityString;
-		[J("rarity")] public string RarityString
+
+		[J("rarity")]
+		public string RarityString
 		{
 			get => _rarityString;
 			private set => Rarity = Utilities.GetBrCosmeticV1Rarity(_rarityString = value);
 		}
 		[I] public BrCosmeticV1Rarity Rarity { get; private set; } = BrCosmeticV1Rarity.Unknown;
-
 		[J] public string DisplayRarity { get; private set; }
 		[J] public string BackendRarity { get; private set; }
 		[J] public string Name { get; private set; }
@@ -51,17 +53,17 @@ namespace Fortnite_API.Objects.V1
 		[J] public DateTime LastUpdate { get; private set; }
 		[J] public DateTime Added { get; private set; }
 
-		public bool HasSet => Set != null;
-		public bool HasSetText => SetText != null;
-		public bool HasSeries => Series != null;
-		public bool HasDisplayAssetPath => DisplayAssetPath != null;
-		public bool HasDefinition => Definition != null;
+		[I] public bool HasSet => Set != null;
+		[I] public bool HasSetText => SetText != null;
+		[I] public bool HasSeries => Series != null;
+		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;
+		[I] public bool HasDefinition => Definition != null;
 		[Obsolete("This property will always return false.")]
-		public bool HasRequiredItemId { get; } = false;
+		[I] public bool HasRequiredItemId { get; } = false;
 		[Obsolete("This property will always return false.")]
-		public bool HasBuiltInEmoteId { get; } = false;
-		public bool HasVariants => Variants != null && Variants.Count != 0;
-		public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
+		[I] public bool HasBuiltInEmoteId { get; } = false;
+		[I] public bool HasVariants => Variants != null && Variants.Count != 0;
+		[I] public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
 
 		public bool HasGameplayTag(string gameplayTag)
 		{
