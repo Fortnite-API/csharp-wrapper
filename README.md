@@ -23,31 +23,37 @@ If you need an in-use example then please take a look at the [program.cs](https:
 ```cs
 using Fortnite_API;
 
-var api = new FortniteApi();
+var apiClient = new FortniteApiClient();
 ```
 
-- FortniteApi class
+- FortniteApiClient class
 
 ```cs
-var api = new FortniteApi();
+var apiClient = new FortniteApiClient();
 
 // accesses the stats endpoint (https://fortnite-api.com/v1/stats)
-api.V1.Stats...
+apiClient.V1.Stats...
+
+// accesses the playlists endpoint (https://fortnite-api.com/v1/playlists)
+apiClient.V1.Playlists...
+
+// accesses the map endpoint (https://fortnite-api.com/v1/map)
+apiClient.V1.Map...
 
 // accesses the shop endpoint (https://fortnite-api.com/v2/shop)
-api.V2.Shop...
+apiClient.V2.Shop...
 
 // accesses the cosmetics endpoint (https://fortnite-api.com/v2/cosmetics)
-api.V2.Cosmetics...
+apiClient.V2.Cosmetics...
 
 // accesses the news endpoint (https://fortnite-api.com/v2/news)
-api.V2.News...
+apiClient.V2.News...
 
 // accesses the creatorcode endpoint (https://fortnite-api.com/v2/creatorcode)
-api.V2.CreatorCode...
+apiClient.V2.CreatorCode...
 
 // accesses the aes endpoint (https://fortnite-api.com/v2/aes)
-api.V2.Aes...
+apiClient.V2.Aes...
 ```
 
 ### Contribute
