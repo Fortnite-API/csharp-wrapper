@@ -34,6 +34,7 @@ namespace Fortnite_API.Objects.V2
 			private set => ShowcaseVideoUri = new Uri(_youtubeBaseUri, _showcaseVideo = value);
 		}
 		[I] public Uri ShowcaseVideoUri { get; private set; }
+		[J] public string DynamicPakId { get; private set; }
 		[J] public string DisplayAssetPath { get; private set; }
 		[J] public string DefinitionPath { get; private set; }
 		[J] public string Path { get; private set; }
@@ -47,6 +48,7 @@ namespace Fortnite_API.Objects.V2
 		[I] public bool HasBuiltInEmoteIds => BuiltInEmoteIds != null && BuiltInEmoteIds.Count != 0;
 		[I] public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
 		[I] public bool HasShowcaseVideo => ShowcaseVideo != null;
+		[I] public bool HasDynamicPakId => DynamicPakId != null;
 		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;
 		[I] public bool HasDefinitionPath => DefinitionPath != null;
 		[I] public bool HasShopHistory => ShopHistory != null;
