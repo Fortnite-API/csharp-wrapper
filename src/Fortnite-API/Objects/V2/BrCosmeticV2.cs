@@ -31,7 +31,7 @@ namespace Fortnite_API.Objects.V2
 		[J] public string ShowcaseVideo
 		{
 			get => _showcaseVideo;
-			private set => ShowcaseVideoUri = new Uri(_youtubeBaseUri, _showcaseVideo = value);
+			private set => ShowcaseVideoUri = _showcaseVideo == null ? null : new Uri(_youtubeBaseUri, _showcaseVideo = value);
 		}
 		[I] public Uri ShowcaseVideoUri { get; private set; }
 		[J] public string DynamicPakId { get; private set; }
