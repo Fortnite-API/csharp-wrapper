@@ -12,8 +12,10 @@ namespace Fortnite_api.Test
 			var apiKey = string.Empty; // optional as of now. check https://dash.fortnite-api.com to be sure
 			var api = new FortniteApiClient(apiKey);
 
-			var newCosmetics = await api.V2.Cosmetics.GetBrNewAsync();
-			var map = await api.V1.Map.GetAsync();
+			var pak1002Cosmetics = await api.V2.Cosmetics.SearchAllBrAsync(x => x.DynamicPakId = "1002");
+			var s16Cosmetics = await api.V2.Cosmetics.SearchAllBrAsync(x => x.BackendIntroduction = 16);
+			//var newCosmetics = await api.V2.Cosmetics.GetBrNewAsync();
+			//var map = await api.V1.Map.GetAsync();
 
 			//var cosmeticsV2 = await api.V2.Cosmetics.GetBrAsync();
 			//var renegadeSearch = await api.V2.Cosmetics.SearchBrAsync(x =>
