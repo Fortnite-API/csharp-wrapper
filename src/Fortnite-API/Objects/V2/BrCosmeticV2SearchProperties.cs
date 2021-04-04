@@ -28,12 +28,14 @@ namespace Fortnite_API.Objects.V2
 		public Optional<string> SetText { get; set; }
 		public Optional<string> BackendSet { get; set; }
 		public Optional<bool> HasIntroduction { get; set; }
+		public Optional<int> BackendIntroduction { get; set; }
 		public Optional<string> IntroductionChapter { get; set; }
 		public Optional<string> IntroductionSeason { get; set; }
 		public Optional<bool> HasFeaturedImage { get; set; }
 		public Optional<bool> HasVariants { get; set; }
 		public Optional<bool> HasGameplayTags { get; set; }
 		public Optional<string> GameplayTag { get; set; }
+		public Optional<string> DynamicPakId { get; set; }
 		public Optional<DateTime> Added { get; set; }
 		public Optional<DateTime> AddedSince { get; set; }
 		public Optional<int> UnseenFor { get; set; }
@@ -143,6 +145,11 @@ namespace Fortnite_API.Objects.V2
 				request.AddQueryParameter("hasIntroduction", HasIntroduction.Value.GetString());
 			}
 
+			if (BackendIntroduction.HasValue)
+			{
+				request.AddQueryParameter("backendIntroduction", BackendIntroduction.Value.ToString());
+			}
+
 			if (IntroductionChapter.HasValue)
 			{
 				request.AddQueryParameter("introductionChapter", IntroductionChapter.Value);
@@ -171,6 +178,11 @@ namespace Fortnite_API.Objects.V2
 			if (GameplayTag.HasValue)
 			{
 				request.AddQueryParameter("gameplayTag", GameplayTag.Value);
+			}
+
+			if (DynamicPakId.HasValue)
+			{
+				request.AddQueryParameter("dynamicPakId", DynamicPakId.Value);
 			}
 
 			if (Added.HasValue)
