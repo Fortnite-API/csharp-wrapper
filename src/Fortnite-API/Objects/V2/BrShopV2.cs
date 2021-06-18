@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 
-using J = Newtonsoft.Json.JsonPropertyAttribute;
 using I = Newtonsoft.Json.JsonIgnoreAttribute;
+using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace Fortnite_API.Objects.V2
 {
@@ -11,6 +11,7 @@ namespace Fortnite_API.Objects.V2
 	{
 		[J] public string Hash { get; private set; }
 		[J] public DateTime Date { get; private set; }
+		[J] public Uri VBuckIcon { get; private set; }
 		[J] public BrShopV2StoreFront Featured { get; private set; }
 		[J] public BrShopV2StoreFront Daily { get; private set; }
 		[J] public BrShopV2StoreFront SpecialFeatured { get; private set; }

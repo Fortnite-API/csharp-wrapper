@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-using J = Newtonsoft.Json.JsonPropertyAttribute;
 using I = Newtonsoft.Json.JsonIgnoreAttribute;
+using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace Fortnite_API.Objects.V2
 {
@@ -19,10 +19,13 @@ namespace Fortnite_API.Objects.V2
 		[J] public int SortPriority { get; private set; }
 		[J] public List<string> Categories { get; private set; }
 		[J] public string SectionId { get; private set; }
+		[J] public BrShopV2StoreFrontEntrySection Section { get; private set; }
 		[J] public string DevName { get; private set; }
 		[J] public string OfferId { get; private set; }
 		[J] public string DisplayAssetPath { get; private set; }
+		[J] public string TileSize { get; private set; }
 		[J] public string NewDisplayAssetPath { get; private set; }
+		[J] public BrNewDisplayAssetV2 NewDisplayAsset { get; private set; }
 		[J] public List<BrCosmeticV2> Items { get; private set; }
 
 		[I] public bool IsBundle => Bundle != null;

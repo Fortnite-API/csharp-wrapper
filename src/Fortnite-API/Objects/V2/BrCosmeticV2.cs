@@ -27,6 +27,7 @@ namespace Fortnite_API.Objects.V2
 		[J] public List<BrCosmeticV2Variant> Variants { get; private set; }
 		[J] public List<string> BuiltInEmoteIds { get; private set; }
 		[J] public List<string> GameplayTags { get; private set; }
+		[J] public List<string> MetaTags { get; private set; }
 			private string _showcaseVideo;
 		[J] public string ShowcaseVideo
 		{
@@ -47,6 +48,7 @@ namespace Fortnite_API.Objects.V2
 		[I] public bool HasVariants => Variants != null && Variants.Count != 0;
 		[I] public bool HasBuiltInEmoteIds => BuiltInEmoteIds != null && BuiltInEmoteIds.Count != 0;
 		[I] public bool HasGameplayTags => GameplayTags != null && GameplayTags.Count != 0;
+		[I] public bool HasMetaTags => MetaTags != null && MetaTags.Count != 0;
 		[I] public bool HasShowcaseVideo => ShowcaseVideo != null;
 		[I] public bool HasDynamicPakId => DynamicPakId != null;
 		[I] public bool HasDisplayAssetPath => DisplayAssetPath != null;

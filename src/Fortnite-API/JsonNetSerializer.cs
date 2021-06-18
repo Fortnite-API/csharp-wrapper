@@ -41,7 +41,7 @@ namespace Fortnite_API
 
 		public string ContentType { get; set; } = "application/json; charset=utf-8";
 
-		public DataFormat DataFormat { get; } = DataFormat.Json;
+		public DataFormat DataFormat => DataFormat.Json;
 	}
 }
 

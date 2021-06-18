@@ -35,6 +35,8 @@ namespace Fortnite_API.Objects.V2
 		public Optional<bool> HasVariants { get; set; }
 		public Optional<bool> HasGameplayTags { get; set; }
 		public Optional<string> GameplayTag { get; set; }
+		public Optional<bool> HasMetaTags { get; set; }
+		public Optional<string> MetaTag { get; set; }
 		public Optional<string> DynamicPakId { get; set; }
 		public Optional<DateTime> Added { get; set; }
 		public Optional<DateTime> AddedSince { get; set; }
@@ -178,6 +180,16 @@ namespace Fortnite_API.Objects.V2
 			if (GameplayTag.HasValue)
 			{
 				request.AddQueryParameter("gameplayTag", GameplayTag.Value);
+			}
+
+			if (HasMetaTags.HasValue)
+			{
+				request.AddQueryParameter("hasMetaTags", HasMetaTags.Value.GetString());
+			}
+
+			if (MetaTag.HasValue)
+			{
+				request.AddQueryParameter("metaTag", GameplayTag.Value);
 			}
 
 			if (DynamicPakId.HasValue)

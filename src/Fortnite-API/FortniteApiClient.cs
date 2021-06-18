@@ -17,7 +17,7 @@ namespace Fortnite_API
 			var assemblyVersion = GetType().Assembly.GetName().Version;
 			var versionString = assemblyVersion == null ? "unknown" : assemblyVersion.ToString(3);
 
-			var client = new RestClient(new Uri("https://fortnite-api.com/", UriKind.Absolute))
+			var client = new RestClient("https://fortnite-api.com/")
 			{
 				UserAgent = $"Fortnite-API.NET/{versionString}",
 				Timeout = 10 * 1000

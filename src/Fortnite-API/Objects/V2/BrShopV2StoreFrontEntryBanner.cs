@@ -9,6 +9,7 @@ namespace Fortnite_API.Objects.V2
 	public class BrShopV2StoreFrontEntryBanner : IEquatable<BrShopV2StoreFrontEntryBanner>
 	{
 		[J] public string Value { get; private set; }
+		[J] public string Intensity { get; private set; }
 		[J] public string BackendValue { get; private set; }
 
 		public bool Equals(BrShopV2StoreFrontEntryBanner other)
@@ -23,7 +24,7 @@ namespace Fortnite_API.Objects.V2
 				return true;
 			}
 
-			return Value == other.Value && BackendValue == other.BackendValue;
+			return Value == other.Value && Intensity == other.Intensity && BackendValue == other.BackendValue;
 		}
 
 		public override bool Equals(object obj)
@@ -50,7 +51,10 @@ namespace Fortnite_API.Objects.V2
 		{
 			unchecked
 			{
-				return Value.GetHashCode() * 397 ^ BackendValue.GetHashCode();
+				var hashCode = Value != null ? Value.GetHashCode() : 0;
+				hashCode = hashCode * 397 ^ (Intensity != null ? Intensity.GetHashCode() : 0);
+				hashCode = hashCode * 397 ^ (BackendValue != null ? BackendValue.GetHashCode() : 0);
+				return hashCode;
 			}
 		}
 
