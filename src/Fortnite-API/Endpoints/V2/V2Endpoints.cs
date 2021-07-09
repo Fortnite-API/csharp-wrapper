@@ -9,6 +9,7 @@ namespace Fortnite_API.Endpoints.V2
 		public NewsV2Endpoints News { get; }
 		public CreatorCodeV2Endpoints CreatorCode { get; }
 		public ShopV2Endpoints Shop { get; }
+		public StatsV2Endpoints Stats { get; }
 
 		internal V2Endpoints(IRestClient client)
 		{
@@ -17,6 +18,7 @@ namespace Fortnite_API.Endpoints.V2
 			News = new NewsV2Endpoints(client);
 			CreatorCode = new CreatorCodeV2Endpoints(client);
 			Shop = new ShopV2Endpoints(client);
+			Stats = new StatsV2Endpoints(client);
 		}
 	}
 }
