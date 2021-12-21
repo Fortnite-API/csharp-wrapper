@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-using J = Newtonsoft.Json.JsonPropertyAttribute;
 using I = Newtonsoft.Json.JsonIgnoreAttribute;
+using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace Fortnite_API.Objects.V2
 {

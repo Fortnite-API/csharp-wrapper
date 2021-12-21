@@ -14,10 +14,12 @@ namespace Fortnite_API.Objects.V2
 		[J] public Dictionary<string, Uri> Images { get; private set; }
 		[J] public Dictionary<string, BrMaterialInstanceV2Color> Colors { get; private set; }
 		[J] public Dictionary<string, float> Scalings { get; private set; }
+		[J] public Dictionary<string, bool> Flags { get; private set; }
 
 		[I] public bool HasImages => Images != null && Images.Count != 0;
 		[I] public bool HasColors => Colors != null && Colors.Count != 0;
 		[I] public bool HasScalings => Scalings != null && Scalings.Count != 0;
+		[I] public bool HasFlags => Flags != null && Flags.Count != 0;
 
 		public bool Equals(BrMaterialInstanceV2 other)
 		{
