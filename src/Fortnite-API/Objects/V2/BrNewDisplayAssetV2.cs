@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using I = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace Fortnite_API.Objects.V2
 {
@@ -10,7 +11,10 @@ namespace Fortnite_API.Objects.V2
 	public class BrNewDisplayAssetV2 : IEquatable<BrNewDisplayAssetV2>
 	{
 		[J] public string Id { get; private set; }
+		[J] public string CosmeticId { get; private set; }
 		[J] public List<BrMaterialInstanceV2> MaterialInstances { get; private set; }
+
+		[I] public bool HasCosmeticId => CosmeticId != null;
 
 		public bool Equals(BrNewDisplayAssetV2 other)
 		{
